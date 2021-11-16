@@ -13,12 +13,12 @@
 		770F71492739469B00DB9D62 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 770F71482739469B00DB9D62 /* Preview Assets.xcassets */; };
 		770F714B2739469B00DB9D62 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770F714A2739469B00DB9D62 /* Persistence.swift */; };
 		770F714E2739469B00DB9D62 /* GagaChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 770F714C2739469B00DB9D62 /* GagaChallenge.xcdatamodeld */; };
+		77261ECA2743BEBE0076CA09 /* AVManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77261EC92743BEBE0076CA09 /* AVManager.swift */; };
 		774A3A65273A810600067A76 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774A3A64273A810600067A76 /* ProfileView.swift */; };
 		774A3A9E273E811500067A76 /* AgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774A3A9D273E811500067A76 /* AgeView.swift */; };
 		774A3AA0273E8B7300067A76 /* ExtensionsAndGeneralsFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774A3A9F273E8B7300067A76 /* ExtensionsAndGeneralsFunctions.swift */; };
 		774A3AA22742338600067A76 /* DownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774A3AA12742338600067A76 /* DownloadView.swift */; };
 		774A3AA4274235E600067A76 /* download.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 774A3AA3274235E600067A76 /* download.mp4 */; };
-		774A3AA627423B0000067A76 /* AVManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774A3AA527423B0000067A76 /* AVManager.swift */; };
 		774A3AA927427EDD00067A76 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774A3AA827427EDD00067A76 /* MenuView.swift */; };
 		7774CFD3273A6C580093853B /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7774CFD1273A6C580093853B /* AppModel.swift */; };
 		7774CFD5273A6C650093853B /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7774CFD4273A6C650093853B /* Model.swift */; };
@@ -33,12 +33,12 @@
 		770F71482739469B00DB9D62 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		770F714A2739469B00DB9D62 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		770F714D2739469B00DB9D62 /* GagaChallenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GagaChallenge.xcdatamodel; sourceTree = "<group>"; };
+		77261EC92743BEBE0076CA09 /* AVManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVManager.swift; sourceTree = "<group>"; };
 		774A3A64273A810600067A76 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		774A3A9D273E811500067A76 /* AgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeView.swift; sourceTree = "<group>"; };
 		774A3A9F273E8B7300067A76 /* ExtensionsAndGeneralsFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsAndGeneralsFunctions.swift; sourceTree = "<group>"; };
 		774A3AA12742338600067A76 /* DownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadView.swift; sourceTree = "<group>"; };
 		774A3AA3274235E600067A76 /* download.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = download.mp4; sourceTree = "<group>"; };
-		774A3AA527423B0000067A76 /* AVManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AVManager.swift; path = "../../../../My Drive/ADA/Projects/Day2/Day2_Intro/ViewModel/AVManager.swift"; sourceTree = "<group>"; };
 		774A3AA7274262B400067A76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		774A3AA827427EDD00067A76 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		7774CFD1273A6C580093853B /* AppModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
@@ -81,8 +81,8 @@
 				770F71432739469A00DB9D62 /* ContentView.swift */,
 				774A3A9C273E80FF00067A76 /* UserSettingsViewElements */,
 				774A3AA12742338600067A76 /* DownloadView.swift */,
-				774A3AA527423B0000067A76 /* AVManager.swift */,
 				7774CFD1273A6C580093853B /* AppModel.swift */,
+				77261EC92743BEBE0076CA09 /* AVManager.swift */,
 				7774CFD4273A6C650093853B /* Model.swift */,
 				774A3A9F273E8B7300067A76 /* ExtensionsAndGeneralsFunctions.swift */,
 				770F714A2739469B00DB9D62 /* Persistence.swift */,
@@ -188,7 +188,6 @@
 				770F714B2739469B00DB9D62 /* Persistence.swift in Sources */,
 				770F714E2739469B00DB9D62 /* GagaChallenge.xcdatamodeld in Sources */,
 				774A3A65273A810600067A76 /* ProfileView.swift in Sources */,
-				774A3AA627423B0000067A76 /* AVManager.swift in Sources */,
 				770F71442739469A00DB9D62 /* ContentView.swift in Sources */,
 				770F71422739469A00DB9D62 /* GagaChallengeApp.swift in Sources */,
 				7774CFD7273A6D100093853B /* ViewModifiersExtensions.swift in Sources */,
@@ -197,6 +196,7 @@
 				774A3AA927427EDD00067A76 /* MenuView.swift in Sources */,
 				774A3AA22742338600067A76 /* DownloadView.swift in Sources */,
 				774A3A9E273E811500067A76 /* AgeView.swift in Sources */,
+				77261ECA2743BEBE0076CA09 /* AVManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
