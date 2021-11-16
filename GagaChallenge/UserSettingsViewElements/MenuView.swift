@@ -4,36 +4,63 @@ import SwiftUI
 struct MenuView: View {
     
     @ObservedObject var appModel: AppModel
-    var user: Users?
-    @State var name: String
-    @State var showProfile = false
+    
+    @State var user: Users?
+//    @State var name: String
+    @State var showProfile = true
+//    @State var picture: String
+//    @State var color: Color
+    
+    var name: String {
+        appModel.user?.name ?? ""
+    }
     
     init(appModel: AppModel) {
        
-        self.user = appModel.user
+//        self.user = appModel.user
         self.appModel = appModel
+        self.user = appModel.user
 
-        if let name = user?.name {
-            self.name = name
-        } else {
-            self.name = ""
-        }
+//        if let name = user?.name {
+//            self.name = name
+//        } else {
+//            self.name = ""
+//        }
         
         if appModel.user == nil {
             self.showProfile = true
         }
+        
+//        if let picture = user?.picture {
+//            self.picture = picture
+//        } else {
+//            self.picture = "defaulAvatar"
+//
+//    }
+//        if let color = user?.color {
+//            self.color = getColor(data: color)
+//        } else {
+//            self.color = Color.random
+//        }
     }
     
     var body: some View {
         NavigationView {
             VStack {
-                Circle()
-                    .onLongPressGesture {
-                        self.showProfile.toggle()
-                    }
-                    .sheet(isPresented: $showProfile) {
-                        ProfileView(appModel: appModel, showProfile: $showProfile)
-                    }
+//                ZStack {
+//                    Circle()
+//                        .foregroundColor(color)
+//                        .frame(width: sizeOfPictureDescription.width * 1.2, height: sizeOfPictureDescription.height * 1.3)
+//                        .shadow(radius: 5)
+//                        Image(picture)
+//                            .resizable()
+//                            .scaledToFit()
+//                            .frame(width: sizeOfPictureDescription.width, height: sizeOfPictureDescription.height)
+//                            .foregroundColor(.white)
+//                }
+//                .padding(.bottom)
+//            }
+                
                 
                 Text("Hi, \(name) !")
                     .font(.largeTitle)
