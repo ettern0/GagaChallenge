@@ -3,9 +3,8 @@ import CoreData
 
 struct ProfileView: View {
 
-    @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var appModel: AppModel
-    //@Binding var showListPropertiesItem: ListPropertiesState?
+    @Binding var showProfile: Bool
     let sizeOfRROfDescription = CGSize(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.3)
     var sizeOfPictureDescription: CGSize { CGSize(width: sizeOfRROfDescription.width*0.5, height: sizeOfRROfDescription.height*0.5) }
     let colorsArray: Array<Color> = [.red, .orange, .yellow, .green, .blue, .brown, .purple, .mint, .pink, .gray, .teal]
@@ -22,7 +21,7 @@ struct ProfileView: View {
     @State var ageIsEditing: Bool = false
     @FocusState private var emojiIsFocused: Bool
 
-    init(appModel: AppModel) {
+    init(appModel: AppModel, showProfile: Binding<Bool>) {
 
         self.user = appModel.user
         self.appModel = appModel
@@ -42,7 +41,7 @@ struct ProfileView: View {
         if let picture = user?.picture {
             self.picture = picture
         } else {
-            self.picture = "person.fill"
+            self.picture = "defaulAvatar"
         }
 
         if let color = user?.color {
@@ -51,30 +50,23 @@ struct ProfileView: View {
             self.color = Color.random
         }
 
+        self._showProfile = showProfile
     }
 
     var body: some View {
-        ZStack(alignment: .top) {
-            Color(.systemGroupedBackground)
-                .ignoresSafeArea()
-            VStack {
-                HStack {
-                    backButton
-                    Spacer()
-                    Text("Properties")
-                    Spacer()
-                    doneButton
+        NavigationView {
+            ZStack(alignment: .top) {
+                Color(.systemGroupedBackground)
+                    .ignoresSafeArea()
+                VStack {
+                    descriptionView.padding(.bottom, -20)
+                    colorChoiseView.padding(.bottom, -20)
+                    signChoiseView
                 }
-                .padding()
-                descriptionView.padding(.bottom, -20)
-                colorChoiseView.padding(.bottom, -20)
-                signChoiseView
+                .navigationBarBackButtonHidden(true)
+                .navigationBarItems(leading: backButton, trailing: doneButton)
             }
-
         }
-        .navigationTitle("Properties")
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: backButton, trailing: doneButton)
     }
 
     var descriptionView: some View {
@@ -116,7 +108,7 @@ struct ProfileView: View {
                     TextField("Name", text: $name) { isEditing in
                             self.nameIsEditing = isEditing
                     }
-                    .lineLimit(nil) // doesn't seem to work in Xcode 11 Beta 5
+                    .lineLimit(nil)
                     .font(.largeTitle)
                     .multilineTextAlignment(.center)
                     .foregroundColor(color)
@@ -141,7 +133,7 @@ struct ProfileView: View {
          ]
 
         return RoundedRectangle(cornerRadius: 10)
-            .frame(width: sizeOfRROfDescription.width, height: sizeOfRROfDescription.height*0.6)
+            .frame(width: sizeOfRROfDescription.width, height: sizeOfRROfDescription.height*0.5)
             .foregroundColor(.white)
             .padding(.all)
             .overlay {
@@ -194,7 +186,7 @@ struct ProfileView: View {
 
     var backButton: some View {
         Button {
-            //showListPropertiesItem = nil
+            showProfile.toggle()
         } label: {
             Text("Cancel")
         }
@@ -206,6 +198,7 @@ struct ProfileView: View {
                               age: age,
                               picture: picture,
                               color: color)
+            showProfile.toggle()
         } label: {
             Text("Done")
         }
@@ -216,11 +209,5 @@ struct ProfileView: View {
             .font(.system(size: 50, weight: .heavy, design: .default))
             .padding(.top, 30)
             .padding(.bottom, 30)
-    }
-}
-
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView(appModel: AppModel.instance).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

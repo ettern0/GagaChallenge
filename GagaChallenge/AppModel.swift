@@ -1,25 +1,24 @@
-import Foundation
 import SwiftUI
+import CoreData
 
 public class AppModel: ObservableObject {
 
     static public let instance = AppModel()
     @Published private(set) var model: Model = Model()
 
-//    public var currentIndexOfView: Int { model.scene.rawValue }
-    
-//    public func toogleTheScene() {
-//        switch model.scene {
-//        case .poster:
-//            model.toogleTheScene(to: .scene1)
-//        case .scene1:
-//            model.toogleTheScene(to: .scene2)
-//        case .scene2:
-//            model.toogleTheScene(to: .scene3)
-//        case .scene3:
-//            model.toogleTheScene(to: .scene4)
-//        default:
-//            model.toogleTheScene(to: .theEnd)
-//        }
-//    }
+    var state: Model.States {
+        model.state
+    }
+
+    var user: Users? {
+        model.user
+    }
+
+    func switchState(to state: Model.States) {
+        model.toogleTheState(to: state)
+    }
+
+    func saveUser(name: String, age: Int16, picture: String, color: Color) {
+        model.saveUser(name: name, age: age, picture: picture, color: color)
+    }
 }

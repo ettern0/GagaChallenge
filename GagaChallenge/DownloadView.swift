@@ -3,6 +3,8 @@ import AVKit
 import SwiftUI
 
 struct DownloadView: View {
+
+    @ObservedObject var appModel: AppModel
     private let videoPlayer = AVPlayer(url: Bundle.main.url(forResource: "download", withExtension: "mp4")!)
 
     var body: some View {
@@ -10,34 +12,22 @@ struct DownloadView: View {
             GagaPlayer(player: videoPlayer)
                 .onAppear {
                     videoPlayer.play()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {  /// Anything over 0.5 seems to work
+                        appModel.switchState(to: .menu)
+                    }
                 }
                 .onDisappear(perform: {
                     videoPlayer.pause()
                 })
                 .edgesIgnoringSafeArea(.all)
         }
-//        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
     }
 }
 
 struct DownloadView_Previews: PreviewProvider {
     static var previews: some View {
-        DownloadView()
+        DownloadView(appModel: AppModel.instance)
     }
 }
 
 
-struct GagaPlayer: UIViewControllerRepresentable {
-    var player: AVPlayer
-
-    func makeUIViewController(context: Context) -> AVPlayerViewController {
-        let controller = AVPlayerViewController()
-        controller.showsPlaybackControls = false
-        controller.modalPresentationStyle = .fullScreen
-        controller.player = player
-        return controller
-    }
-
-    func updateUIViewController(_ uiViewController: AVPlayerViewController, context: Context) {
-    }
-}

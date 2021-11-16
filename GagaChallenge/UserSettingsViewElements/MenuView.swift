@@ -1,17 +1,27 @@
 
 import SwiftUI
 
-struct MainMenuView: View {
+struct MenuView: View {
 
     @ObservedObject var appModel: AppModel
+    @State var showProfile = false
 
     var body: some View {
-        Text("sdf")
+        NavigationView {
+            Button {
+                self.showProfile.toggle()
+            } label: {
+                Text("Profile")
+            }
+        }
+        .sheet(isPresented: $showProfile) {
+            ProfileView(appModel: appModel, showProfile: $showProfile)
+        }
     }
 }
 
-struct MainMenu_Previews: PreviewProvider {
+struct Menu_Previews: PreviewProvider {
     static var previews: some View {
-        MainMenuView(appModel: AppModel.instance)
+        MenuView(appModel: AppModel.instance)
     }
 }
