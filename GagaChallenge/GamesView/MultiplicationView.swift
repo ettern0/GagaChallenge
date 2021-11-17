@@ -4,7 +4,7 @@ import SwiftUI
 struct MultiplicationGameView: View {
 
     var body: some View {
-        Text("test")
+        DrawView()
     }
 }
 
@@ -12,8 +12,25 @@ struct DrawView: View {
 
     @State var points: [[CGPoint]] = [[]]
 
+    var pointsIntersection: [CGPoint] {
+
+        var mergedArrayOfPoints: [CGPoint] = []
+
+        for index in points.indices {
+            mergedArrayOfPoints += points[index]
+        }
+
+        return getIntersectionBetweenArrayOfCGPoints(points: mergedArrayOfPoints)
+
+    }
+
+    var countOfIntersection: Int {
+        pointsIntersection.count
+    }
+
     var body: some View {
 
+        VStack{
         ZStack {
             Rectangle() // replace it with what you need
                 .foregroundColor(.white)
@@ -29,8 +46,29 @@ struct DrawView: View {
                 DrawShape(points: points[index])
                     .stroke(lineWidth: 5) // here you put width of lines
                     .foregroundColor(.blue)
+//                    .overlay {
+//                        if points[index].count > 0 {
+//                            Circle()
+//                            .position(x: points[index][0].x,
+//                                      y: points[index][0].y)
+//                            .frame(width: 30, height: 30)
+//                            .foregroundColor(.red)
+//                        }
+//                    }
             }
+
+
+//            ForEach(pointsIntersection.indices, id: \.self) { index in
+//                Circle()
+//                    .position(x: pointsIntersection[index].x,
+//                              y: pointsIntersection[index].y)
+//                    .frame(width: 30, height: 30)
+//            }
+//
         }
+//            Text("\(countOfIntersection)")
+        }
+
     }
 
     private func addNewPoint(_ value: DragGesture.Value) {

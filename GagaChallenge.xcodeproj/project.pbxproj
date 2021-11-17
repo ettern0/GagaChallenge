@@ -13,7 +13,7 @@
 		770F71492739469B00DB9D62 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 770F71482739469B00DB9D62 /* Preview Assets.xcassets */; };
 		770F714B2739469B00DB9D62 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770F714A2739469B00DB9D62 /* Persistence.swift */; };
 		770F714E2739469B00DB9D62 /* GagaChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 770F714C2739469B00DB9D62 /* GagaChallenge.xcdatamodeld */; };
-		771D96762743DB740063BFE1 /* GameMultiplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771D96752743DB740063BFE1 /* GameMultiplicationView.swift */; };
+		771D96762743DB740063BFE1 /* MultiplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771D96752743DB740063BFE1 /* MultiplicationView.swift */; };
 		77261ECA2743BEBE0076CA09 /* AVManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77261EC92743BEBE0076CA09 /* AVManager.swift */; };
 		774A3A65273A810600067A76 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774A3A64273A810600067A76 /* ProfileView.swift */; };
 		774A3A9E273E811500067A76 /* AgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774A3A9D273E811500067A76 /* AgeView.swift */; };
@@ -34,7 +34,7 @@
 		770F71482739469B00DB9D62 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		770F714A2739469B00DB9D62 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		770F714D2739469B00DB9D62 /* GagaChallenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GagaChallenge.xcdatamodel; sourceTree = "<group>"; };
-		771D96752743DB740063BFE1 /* GameMultiplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMultiplicationView.swift; sourceTree = "<group>"; };
+		771D96752743DB740063BFE1 /* MultiplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplicationView.swift; sourceTree = "<group>"; };
 		77261EC92743BEBE0076CA09 /* AVManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVManager.swift; sourceTree = "<group>"; };
 		774A3A64273A810600067A76 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		774A3A9D273E811500067A76 /* AgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeView.swift; sourceTree = "<group>"; };
@@ -109,7 +109,7 @@
 		771D96742743DB0F0063BFE1 /* GamesView */ = {
 			isa = PBXGroup;
 			children = (
-				771D96752743DB740063BFE1 /* GameMultiplicationView.swift */,
+				771D96752743DB740063BFE1 /* MultiplicationView.swift */,
 			);
 			path = GamesView;
 			sourceTree = "<group>";
@@ -205,7 +205,7 @@
 				7774CFD3273A6C580093853B /* AppModel.swift in Sources */,
 				774A3AA0273E8B7300067A76 /* ExtensionsAndGeneralsFunctions.swift in Sources */,
 				774A3AA927427EDD00067A76 /* MenuView.swift in Sources */,
-				771D96762743DB740063BFE1 /* GameMultiplicationView.swift in Sources */,
+				771D96762743DB740063BFE1 /* MultiplicationView.swift in Sources */,
 				774A3AA22742338600067A76 /* DownloadView.swift in Sources */,
 				774A3A9E273E811500067A76 /* AgeView.swift in Sources */,
 				77261ECA2743BEBE0076CA09 /* AVManager.swift in Sources */,
