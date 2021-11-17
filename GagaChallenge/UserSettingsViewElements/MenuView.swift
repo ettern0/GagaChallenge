@@ -7,6 +7,8 @@ struct MenuView: View {
     @State var showProfile: Bool
     @State var showGame: Bool
     @State var currentGameView: AnyView
+    let sizeOfRROfDescription = CGSize(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.3)
+    var sizeOfPictureDescription: CGSize { CGSize(width: sizeOfRROfDescription.width*0.5, height: sizeOfRROfDescription.height*0.5) }
     
     
     var name: String {
@@ -54,10 +56,12 @@ struct MenuView: View {
                     ZStack {
                         Circle()
                             .foregroundColor(color)
+                            .frame(width: sizeOfPictureDescription.width * 1.3, height: sizeOfPictureDescription.height * 1.3)
                         Image(picture)
                             .resizable()
                             .scaledToFit()
                             .foregroundColor(.white)
+                            .frame(width: sizeOfPictureDescription.width, height: sizeOfPictureDescription.height)
                             .onLongPressGesture {
                                 self.showProfile.toggle()
                 }

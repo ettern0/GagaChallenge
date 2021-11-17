@@ -41,32 +41,35 @@ struct DrawView: View {
                 .onEnded( { value in
                     points.append([])
                 }))
-
+                .onLongPressGesture {
+                    points = [[]]
+                }
             ForEach(points.indices, id: \.self) { index in
                 DrawShape(points: points[index])
                     .stroke(lineWidth: 5) // here you put width of lines
                     .foregroundColor(.blue)
-//                    .overlay {
-//                        if points[index].count > 0 {
-//                            Circle()
-//                            .position(x: points[index][0].x,
-//                                      y: points[index][0].y)
-//                            .frame(width: 30, height: 30)
-//                            .foregroundColor(.red)
-//                        }
-//                    }
+                    .overlay {
+                        if points[index].count > 0 {
+                            Circle()
+                            .position(x: points[index][0].x,
+                                      y: points[index][0].y)
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.red)
+                        }
+                    }
             }
 
 
-//            ForEach(pointsIntersection.indices, id: \.self) { index in
-//                Circle()
-//                    .position(x: pointsIntersection[index].x,
-//                              y: pointsIntersection[index].y)
-//                    .frame(width: 30, height: 30)
-//            }
-//
+            ForEach(pointsIntersection.indices, id: \.self) { index in
+                Circle()
+                    .position(x: pointsIntersection[index].x,
+                              y: pointsIntersection[index].y)
+                    .frame(width: 30, height: 30)
+
+            }
+
         }
-//            Text("\(countOfIntersection)")
+            Text("\(countOfIntersection)")
         }
 
     }
