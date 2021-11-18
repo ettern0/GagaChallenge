@@ -76,8 +76,10 @@ struct MenuView: View {
                     Spacer(minLength: 40)
 
                     HStack{
-                        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
-
+                        Button(action: {
+                            self.showGame = true
+                            self.currentGameView = AnyView(AdditionGameView())
+                        }) {
                             Image(systemName:"plus")
 
                                 .resizable()

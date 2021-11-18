@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42DF25A02745118B002B33B7 /* AdditionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DF259F2745118B002B33B7 /* AdditionView.swift */; };
 		770F71422739469A00DB9D62 /* GagaChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770F71412739469A00DB9D62 /* GagaChallengeApp.swift */; };
 		770F71442739469A00DB9D62 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770F71432739469A00DB9D62 /* ContentView.swift */; };
 		770F71462739469B00DB9D62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 770F71452739469B00DB9D62 /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		42DF259F2745118B002B33B7 /* AdditionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionView.swift; sourceTree = "<group>"; };
 		770F713E2739469A00DB9D62 /* GagaChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GagaChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		770F71412739469A00DB9D62 /* GagaChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GagaChallengeApp.swift; sourceTree = "<group>"; };
 		770F71432739469A00DB9D62 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				771D96752743DB740063BFE1 /* MultiplicationView.swift */,
+				42DF259F2745118B002B33B7 /* AdditionView.swift */,
 			);
 			path = GamesView;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 			files = (
 				7774CFD5273A6C650093853B /* Model.swift in Sources */,
 				770F714B2739469B00DB9D62 /* Persistence.swift in Sources */,
+				42DF25A02745118B002B33B7 /* AdditionView.swift in Sources */,
 				770F714E2739469B00DB9D62 /* GagaChallenge.xcdatamodeld in Sources */,
 				774A3A65273A810600067A76 /* ProfileView.swift in Sources */,
 				770F71442739469A00DB9D62 /* ContentView.swift in Sources */,
@@ -339,7 +343,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GagaChallenge/Preview Content\"";
-				DEVELOPMENT_TEAM = XJB6H4WXH3;
+				DEVELOPMENT_TEAM = HP5KN8K9AX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GagaChallenge/Info.plist;
@@ -352,7 +356,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.evserdyukov.GagaChallenge;
+				PRODUCT_BUNDLE_IDENTIFIER = com.elio.GagaChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -365,10 +369,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GagaChallenge/Preview Content\"";
-				DEVELOPMENT_TEAM = XJB6H4WXH3;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GagaChallenge/Info.plist;
@@ -383,6 +387,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evserdyukov.GagaChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
