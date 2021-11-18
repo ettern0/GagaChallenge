@@ -24,6 +24,7 @@
 		7774CFD3273A6C580093853B /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7774CFD1273A6C580093853B /* AppModel.swift */; };
 		7774CFD5273A6C650093853B /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7774CFD4273A6C650093853B /* Model.swift */; };
 		7774CFD7273A6D100093853B /* ViewModifiersExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7774CFD6273A6D100093853B /* ViewModifiersExtensions.swift */; };
+		77DC104C274519F500D3BBD6 /* ClippingBezier in Frameworks */ = {isa = PBXBuildFile; productRef = 77DC104B274519F500D3BBD6 /* ClippingBezier */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77DC104C274519F500D3BBD6 /* ClippingBezier in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +142,9 @@
 			dependencies = (
 			);
 			name = GagaChallenge;
+			packageProductDependencies = (
+				77DC104B274519F500D3BBD6 /* ClippingBezier */,
+			);
 			productName = GagaChallenge;
 			productReference = 770F713E2739469A00DB9D62 /* GagaChallenge.app */;
 			productType = "com.apple.product-type.application";
@@ -168,6 +173,9 @@
 				Base,
 			);
 			mainGroup = 770F71352739469A00DB9D62;
+			packageReferences = (
+				77DC104A274519F500D3BBD6 /* XCRemoteSwiftPackageReference "ClippingBezier" */,
+			);
 			productRefGroup = 770F713F2739469A00DB9D62 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -411,6 +419,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		77DC104A274519F500D3BBD6 /* XCRemoteSwiftPackageReference "ClippingBezier" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/adamwulf/ClippingBezier";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		77DC104B274519F500D3BBD6 /* ClippingBezier */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 77DC104A274519F500D3BBD6 /* XCRemoteSwiftPackageReference "ClippingBezier" */;
+			productName = ClippingBezier;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		770F714C2739469B00DB9D62 /* GagaChallenge.xcdatamodeld */ = {

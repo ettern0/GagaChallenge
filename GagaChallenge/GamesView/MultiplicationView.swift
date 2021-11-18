@@ -10,18 +10,21 @@ struct MultiplicationGameView: View {
 
 struct DrawView: View {
 
-    @State var points: [[CGPoint]] = [[]]
+    @State var curves: [[CGPoint]] = [[]]
 
     var pointsIntersection: [CGPoint] {
+        guard curves.count >= 2 else { return [] }
 
-        var mergedArrayOfPoints: [CGPoint] = []
-
-        for index in points.indices {
-            mergedArrayOfPoints += points[index]
+        var intersections = [CGPoint]()
+        for i in 0 ... curves.count - 2 {
+            for j in i + 1 ... curves.count - 1 {
+                let (line1, line2) = (curves[i], curves[j])
+                let intersection = line1.intersections(with: line2)
+                intersections.append(contentsOf: intersection)
+            }
         }
 
-        return getIntersectionBetweenArrayOfCGPoints(points: mergedArrayOfPoints)
-
+        return intersections
     }
 
     var countOfIntersection: Int {
@@ -39,35 +42,41 @@ struct DrawView: View {
                     self.addNewPoint(value)
                 })
                 .onEnded( { value in
-                    points.append([])
+                    curves.append([])
                 }))
                 .onLongPressGesture {
-                    points = [[]]
+                    curves = [[]]
                 }
-            ForEach(points.indices, id: \.self) { index in
-                DrawShape(points: points[index])
-                    .stroke(lineWidth: 5) // here you put width of lines
-                    .foregroundColor(.blue)
-                    .overlay {
-                        if points[index].count > 0 {
-                            Circle()
-                            .position(x: points[index][0].x,
-                                      y: points[index][0].y)
-                            .frame(width: 30, height: 30)
-                            .foregroundColor(.red)
-                        }
-                    }
+            ForEach(curves.indices, id: \.self) { index in
+                GeometryReader { proxy in
+                    DrawShape(points: curves[index])
+                        .stroke(lineWidth: 5) // here you put width of lines
+                        .foregroundColor(.blue)
+//                        .overlay {
+//                            if !curves[index].isEmpty {
+//                                Circle()
+//                                    .position(
+//                                        x: curves[index][0].x - proxy.size.width / 2 + 15,
+//                                        y: curves[index][0].y - proxy.size.height / 2 + 15)
+//                                .frame(width: 30, height: 30)
+//                                .foregroundColor(.red)
+//                            }
+//                        }
+                }
             }
 
 
             ForEach(pointsIntersection.indices, id: \.self) { index in
-                Circle()
-                    .position(x: pointsIntersection[index].x,
-                              y: pointsIntersection[index].y)
-                    .frame(width: 30, height: 30)
-
-            }
-
+                GeometryReader { proxy in
+                    Circle()
+                        .position(x: pointsIntersection[index].x,
+                                  y: pointsIntersection[index].y)
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(.blue)
+                        .opacity(0.5)
+                        .animation(.easeIn, value: 1)
+                    }
+                }
         }
             Text("\(countOfIntersection)")
         }
@@ -75,7 +84,7 @@ struct DrawView: View {
     }
 
     private func addNewPoint(_ value: DragGesture.Value) {
-        points[points.endIndex - 1].append(value.location)
+        curves[curves.endIndex - 1].append(value.location)
     }
 
 }

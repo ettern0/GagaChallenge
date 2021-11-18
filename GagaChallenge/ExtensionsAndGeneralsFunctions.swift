@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 import CoreData
-
+import ClippingBezier
 
 func getUIDataFromColor(color: Color) -> Data {
     do {
@@ -28,6 +28,53 @@ extension Color {
             green: .random(in: 0...1),
             blue: .random(in: 0...1)
         )
+    }
+}
+
+extension UIBezierPath {
+    convenience init?(points: [CGPoint]) {
+        let path = UIBezierPath()
+        guard points.count >= 2 else {
+            return nil
+        }
+        for i in 0 ... points.count - 2 {
+            path.move(to: points[i])
+            path.addLine(to: points[i + 1])
+        }
+
+        self.init(cgPath: path.cgPath)
+    }
+}
+
+extension Array where Element == CGPoint {
+    func intersections(with points: [CGPoint]) -> [CGPoint] {
+
+        let firstPath = UIBezierPath(points: self)
+
+        guard firstPath != nil,
+              let secondPath = UIBezierPath(points: points)
+        else {
+            return []
+        }
+
+        let intersections = firstPath!.findIntersections(withClosedPath: secondPath, andBeginsInside: nil)
+        //firstPath.closestPointOnPath(to: <#T##CGPoint#>)
+
+        var result: [CGPoint] = []
+        var interPoints: [CGPoint] = []
+        intersections?.forEach { value in
+            interPoints.append(value.location1())
+        }
+
+        interPoints.forEach { point in
+            result.append(firstPath!.closestPointOnPath(to: point))
+        }
+
+//        let result = intersections?.map {
+//            //CGPoint(x: $0.tValue1, y: $0.tValue2) // NE RABOTAET ETO CHOTOTO DRUGOE
+//            CGPoint(x: $0.bez1.pointee.x, y: $0.bez1.pointee.y)
+//        } ?? []
+        return result
     }
 }
 
