@@ -17,7 +17,7 @@ struct MenuView: View {
     
     var color: Color {
         if let _color = appModel.user?.color {
-          return  getColor(data: _color)
+            return  getColor(data: _color)
         }
         
         return Color(.black)
@@ -33,24 +33,19 @@ struct MenuView: View {
         self.currentGameView = AnyView(EmptyView())
         _showProfile = State (initialValue: (appModel.user == nil))
         _showGame = State(initialValue: false)
-    
-       
-        
     }
-    
-    
 
     var body: some View {
         NavigationView {
-        //+Show the game if we tapped on menu
-        VStack {
-            NavigationLink(
-                destination: self.currentGameView,
-                isActive: $showGame
-            ) {
-                EmptyView()
-            }
-            //-Show the game if we tapped on menu
+            //+Show the game if we tapped on menu
+            VStack {
+                NavigationLink(
+                    destination: self.currentGameView,
+                    isActive: $showGame
+                ) {
+                    EmptyView()
+                }
+                //-Show the game if we tapped on menu
 
                 VStack {
                     ZStack {
@@ -64,8 +59,8 @@ struct MenuView: View {
                             .frame(width: sizeOfPictureDescription.width, height: sizeOfPictureDescription.height)
                             .onLongPressGesture {
                                 self.showProfile.toggle()
-                }
-               
+                            }
+
                     }
                     Text("Hi, \(name) !")
                         .font(.largeTitle)
@@ -100,14 +95,13 @@ struct MenuView: View {
                                 .background(RoundedRectangle(cornerRadius: 15).foregroundColor(.blue))
                                 .padding(.horizontal)
                                 .shadow(radius: 25)
-
                         }
-
                     }
+
                     HStack{
                         Button(action: {
                             self.showGame = true
-                            self.currentGameView = AnyView(MultiplicationGameView())
+                            self.currentGameView = AnyView(MultiplicationGameView(showGame: $showGame))
                         }) {
                             Image(systemName:"multiply")
                                 .resizable()
@@ -143,11 +137,10 @@ struct MenuView: View {
             ProfileView(appModel: appModel, showProfile: $showProfile)
         }
     }
-
+}
 
 struct Menu_Previews: PreviewProvider {
     static var previews: some View {
         MenuView(appModel: AppModel.instance)
     }
-}
 }

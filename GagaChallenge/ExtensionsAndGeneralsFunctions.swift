@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 import CoreData
-
+import ClippingBezier
 
 func getUIDataFromColor(color: Color) -> Data {
     do {
@@ -28,6 +28,40 @@ extension Color {
             green: .random(in: 0...1),
             blue: .random(in: 0...1)
         )
+    }
+}
+
+extension UIBezierPath {
+    convenience init?(points: [CGPoint]) {
+        let path = UIBezierPath()
+        guard points.count >= 2 else {
+            return nil
+        }
+        for i in 0 ... points.count - 2 {
+            path.move(to: points[i])
+            path.addLine(to: points[i + 1])
+        }
+
+        self.init(cgPath: path.cgPath)
+    }
+}
+
+extension Array where Element == CGPoint {
+
+    func intersections(with points: [CGPoint]) -> [CGPoint] {
+
+        guard  let firstPath = UIBezierPath(points: self),
+              let secondPath = UIBezierPath(points: points)
+        else {
+            return []
+        }
+
+        let intersections = firstPath.findIntersections(withClosedPath: secondPath, andBeginsInside: nil)
+
+        let result = intersections?.map {
+            $0.location1()
+        } ?? []
+        return result
     }
 }
 
@@ -68,3 +102,9 @@ func intersectionBetweenSegments(p0: CGPoint, _ p1: CGPoint, _ p2: CGPoint, _ p3
     return nil
 }
 
+extension CGPoint : Hashable {
+  public func hash(into hasher: inout Hasher) {
+    hasher.combine(x)
+    hasher.combine(y)
+  }
+}
