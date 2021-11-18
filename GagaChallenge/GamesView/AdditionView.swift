@@ -30,7 +30,7 @@ struct AdditionGameView: View {
                     }
                 
                 Rectangle()
-                    .fill(.clear)
+                    .fill(.white)
                     .frame(width: 207, height: 500)
                     .onTapGesture {
                     print("right side tapped")
