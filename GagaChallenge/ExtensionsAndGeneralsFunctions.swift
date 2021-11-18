@@ -59,7 +59,6 @@ extension Array where Element == CGPoint {
         let intersections = firstPath.findIntersections(withClosedPath: secondPath, andBeginsInside: nil)
 
         let result = intersections?.map {
-            //CGPoint(x: $0.tValue1, y: $0.tValue2) // NE RABOTAET ETO CHOTOTO DRUGOE
             $0.location1()
         } ?? []
         return result

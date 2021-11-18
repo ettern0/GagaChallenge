@@ -3,15 +3,11 @@ import SwiftUI
 
 struct MultiplicationGameView: View {
 
-    var body: some View {
-        DrawView()
-    }
-}
-
-struct DrawView: View {
-
     @State var curves: [[CGPoint]] = [[]]
     @State var arrayOfCountingOfPointsIntersections: [CGPoint: Int] = [:]
+    @Binding var showGame: Bool
+
+    //let firstMultiplicationDigit = Int().words.randomElement()
 
     var pointsIntersection: [CGPoint] {
         guard curves.count >= 2 else { return [] }
@@ -32,8 +28,24 @@ struct DrawView: View {
         pointsIntersection.count
     }
 
-    var body: some View {
 
+
+    var body: some View {
+        NavigationView {
+            drawSection
+        }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(
+            leading: backButton,
+            trailing:
+                HStack {
+                    undoButton
+                    clearButton
+                    Spacer()
+                })
+    }
+
+    var drawSection: some View {
         ZStack {
             Rectangle() // replace it with what you need
                 .foregroundColor(.white)
@@ -41,12 +53,9 @@ struct DrawView: View {
                 .gesture(DragGesture().onChanged( { value in
                     self.addNewPoint(value)
                 })
-                .onEnded( { value in
+                            .onEnded( { value in
                     curves.append([])
                 }))
-                .onLongPressGesture {
-                    curves = [[]]
-                }
             ForEach(curves.indices, id: \.self) { index in
                 GeometryReader { proxy in
                     DrawShape(points: curves[index])
@@ -54,7 +63,6 @@ struct DrawView: View {
                         .foregroundColor(.blue)
                 }
             }
-
 
             ForEach(pointsIntersection.indices, id: \.self) { index in
                 GeometryReader { proxy in
@@ -76,18 +84,55 @@ struct DrawView: View {
                         }
                 }
                 .onAppear {
-                    pointsIntersection.forEach { point in
-                        if arrayOfCountingOfPointsIntersections[point] == nil {
-                            arrayOfCountingOfPointsIntersections[point] = arrayOfCountingOfPointsIntersections.count + 1
-                        }
-                    }
+                    refreshArrayOfCountingOfPointsIntersections()
                 }
             }
         }
     }
 
+    var undoButton: some View {
+        Button {
+            if curves.count > 1 {
+               curves.remove(at: curves.endIndex - 2)
+                arrayOfCountingOfPointsIntersections.removeAll()
+                refreshArrayOfCountingOfPointsIntersections()
+            }
+
+            if curves.isEmpty {
+                curves.append([])
+            }
+        } label: {
+            Image(systemName: "arrow.uturn.backward.circle")
+        }
+    }
+
+    var clearButton: some View {
+        Button {
+            curves = [[]]
+            arrayOfCountingOfPointsIntersections.removeAll()
+        } label: {
+            Image(systemName: "trash")
+        }
+    }
+
+    var backButton: some View {
+        Button {
+            showGame.toggle()
+        } label: {
+            Text("Back")
+        }
+    }
+
     private func addNewPoint(_ value: DragGesture.Value) {
         curves[curves.endIndex - 1].append(value.location)
+    }
+
+    private func refreshArrayOfCountingOfPointsIntersections () {
+        pointsIntersection.forEach { point in
+            if arrayOfCountingOfPointsIntersections[point] == nil {
+                arrayOfCountingOfPointsIntersections[point] = arrayOfCountingOfPointsIntersections.count + 1
+            }
+        }
     }
 
 }
