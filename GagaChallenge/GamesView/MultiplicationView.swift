@@ -11,6 +11,7 @@ struct MultiplicationGameView: View {
 struct DrawView: View {
 
     @State var curves: [[CGPoint]] = [[]]
+    @State var arrayOfCountingOfPointsIntersections: [CGPoint: Int] = [:]
 
     var pointsIntersection: [CGPoint] {
         guard curves.count >= 2 else { return [] }
@@ -33,7 +34,6 @@ struct DrawView: View {
 
     var body: some View {
 
-        VStack{
         ZStack {
             Rectangle() // replace it with what you need
                 .foregroundColor(.white)
@@ -52,35 +52,38 @@ struct DrawView: View {
                     DrawShape(points: curves[index])
                         .stroke(lineWidth: 5) // here you put width of lines
                         .foregroundColor(.blue)
-//                        .overlay {
-//                            if !curves[index].isEmpty {
-//                                Circle()
-//                                    .position(
-//                                        x: curves[index][0].x - proxy.size.width / 2 + 15,
-//                                        y: curves[index][0].y - proxy.size.height / 2 + 15)
-//                                .frame(width: 30, height: 30)
-//                                .foregroundColor(.red)
-//                            }
-//                        }
                 }
             }
 
 
             ForEach(pointsIntersection.indices, id: \.self) { index in
                 GeometryReader { proxy in
+
+                    let point = pointsIntersection[index]
+                    let numberOfPoint = arrayOfCountingOfPointsIntersections[point]
+
                     Circle()
-                        .position(x: pointsIntersection[index].x,
-                                  y: pointsIntersection[index].y)
+                        .position(x: point.x,
+                                  y: point.y)
                         .frame(width: 30, height: 30)
-                        .foregroundColor(.blue)
-                        .opacity(0.5)
-                        .animation(.easeIn, value: 1)
+                        .foregroundColor(.green)
+                        .overlay {
+                            if let number = numberOfPoint {
+                                Text("\(number)")
+                                    .position(x: point.x,
+                                              y: point.y)
+                            }
+                        }
+                }
+                .onAppear {
+                    pointsIntersection.forEach { point in
+                        if arrayOfCountingOfPointsIntersections[point] == nil {
+                            arrayOfCountingOfPointsIntersections[point] = arrayOfCountingOfPointsIntersections.count + 1
+                        }
                     }
                 }
+            }
         }
-            Text("\(countOfIntersection)")
-        }
-
     }
 
     private func addNewPoint(_ value: DragGesture.Value) {

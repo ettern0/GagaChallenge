@@ -47,33 +47,21 @@ extension UIBezierPath {
 }
 
 extension Array where Element == CGPoint {
+
     func intersections(with points: [CGPoint]) -> [CGPoint] {
 
-        let firstPath = UIBezierPath(points: self)
-
-        guard firstPath != nil,
+        guard  let firstPath = UIBezierPath(points: self),
               let secondPath = UIBezierPath(points: points)
         else {
             return []
         }
 
-        let intersections = firstPath!.findIntersections(withClosedPath: secondPath, andBeginsInside: nil)
-        //firstPath.closestPointOnPath(to: <#T##CGPoint#>)
+        let intersections = firstPath.findIntersections(withClosedPath: secondPath, andBeginsInside: nil)
 
-        var result: [CGPoint] = []
-        var interPoints: [CGPoint] = []
-        intersections?.forEach { value in
-            interPoints.append(value.location1())
-        }
-
-        interPoints.forEach { point in
-            result.append(firstPath!.closestPointOnPath(to: point))
-        }
-
-//        let result = intersections?.map {
-//            //CGPoint(x: $0.tValue1, y: $0.tValue2) // NE RABOTAET ETO CHOTOTO DRUGOE
-//            CGPoint(x: $0.bez1.pointee.x, y: $0.bez1.pointee.y)
-//        } ?? []
+        let result = intersections?.map {
+            //CGPoint(x: $0.tValue1, y: $0.tValue2) // NE RABOTAET ETO CHOTOTO DRUGOE
+            $0.location1()
+        } ?? []
         return result
     }
 }
@@ -115,3 +103,9 @@ func intersectionBetweenSegments(p0: CGPoint, _ p1: CGPoint, _ p2: CGPoint, _ p3
     return nil
 }
 
+extension CGPoint : Hashable {
+  public func hash(into hasher: inout Hasher) {
+    hasher.combine(x)
+    hasher.combine(y)
+  }
+}
