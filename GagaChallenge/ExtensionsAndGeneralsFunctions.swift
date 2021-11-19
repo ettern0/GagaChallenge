@@ -2,6 +2,7 @@ import Foundation
 import SwiftUI
 import CoreData
 import ClippingBezier
+import AVFAudio
 
 func getUIDataFromColor(color: Color) -> Data {
     do {
@@ -107,4 +108,27 @@ extension CGPoint : Hashable {
     hasher.combine(x)
     hasher.combine(y)
   }
+}
+
+extension Int {
+    var stringValue: String {
+        "\(self)"
+    }
+
+    public static func randomExept(of exception:Int, range: ClosedRange<Int>) -> Int {
+        if range.isEmpty {
+            assertionFailure()
+            return exception
+        }
+        if range.count == 1 {
+            return range.first ?? exception
+        }
+
+        while true {
+            let rElement = Int.random(in: range)
+            if rElement != exception {
+                return rElement
+            }
+        }
+    }
 }

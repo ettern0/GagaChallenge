@@ -1,57 +1,73 @@
 import SwiftUI
 
-struct PlusView: View {
+struct SystemImageView: View {
+
+    var size: CGFloat
+    var systemName = ""
 
     var body: some View {
-        Image(systemName:"plus")
-
+        Image(systemName:systemName)
             .resizable()
-            .frame(width: 80.0, height: 80.0)
+            .frame(width: size, height: size)
             .foregroundColor(Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)))
-            .frame(width: 150.0, height: 150.0)
-            .padding(.horizontal)
     }
-
 }
 
-struct MinusView: View {
+
+struct SignView: View {
+
+    var digit: String
+    var size: CGFloat
 
     var body: some View {
-        Image(systemName:"minus")
 
-            .resizable()
-            .frame(width: 80.0, height: 80.0)
+        Text(" \(digit) ")
+            .font(.system(size: size))
+           // .fontWeight(.bold)
             .foregroundColor(Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)))
-            .frame(width: 150.0, height: 150.0)
-            .padding(.horizontal)
     }
-
 }
 
-struct MultiplyView: View {
+struct ButtonImageView: View {
+
+    var size: CGFloat
+    var systemName = ""
+    var signColor: Color = .green
+    var backgroundColor: Color = .white
 
     var body: some View {
-        Image(systemName:"multiply")
+        Button {
 
-            .resizable()
-            .frame(width: 80.0, height: 80.0)
-            .foregroundColor(Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)))
-            .frame(width: 150.0, height: 150.0)
-            .padding(.horizontal)
+        } label: {
+            Image(systemName: systemName)
+                .resizable()
+                .frame(width: size, height: size)
+                .foregroundColor(signColor)
+                .frame(width: size * 1.2, height: size * 1.2)
+                .background(RoundedRectangle(cornerRadius: 10).foregroundColor(backgroundColor))
+        }
     }
-
 }
 
-struct EqualView: View {
+struct ButtonTextView: View {
+
+    var size: CGFloat
+    var sizeOfText: CGFloat
+    var value = ""
+    var signColor: Color = .white
+    var backgroundColor: Color = .green
 
     var body: some View {
-        Image(systemName:"equal")
+        Button {
 
-            .resizable()
-            .frame(width: 80.0, height: 80.0)
-            .foregroundColor(Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)))
-            .frame(width: 150.0, height: 150.0)
-            .padding(.horizontal)
+        } label: {
+            Text(value)
+                .font(.system(size: sizeOfText))
+                .frame(width: size, height: size)
+                .foregroundColor(signColor)
+                .frame(width: size * 1.2, height: size * 1.2)
+                .background(RoundedRectangle(cornerRadius: 10).foregroundColor(backgroundColor))
+        }
     }
-
 }
+
