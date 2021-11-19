@@ -16,7 +16,6 @@ struct AdditionGameView: View {
     @State var counttotal: Int = 0
     @Binding var showGame: Bool
     @State var stackOfOperation: [String] = []
-   
             
     var body: some View {
         
@@ -76,9 +75,11 @@ struct AdditionGameView: View {
                     Capsule()
                     .fill(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)), Color(#colorLiteral(red: 0.6745098039, green: 0.9843137255, blue: 0.5568627451, alpha: 1))]), startPoint: .leading, endPoint: .trailing))
                     .frame(width: 360.0, height: 6.0)
+                    
+                    Spacer(minLength: 50)
             }
                     
-               
+                    
                 
             
             
@@ -105,6 +106,11 @@ struct AdditionGameView: View {
                         .foregroundColor(Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 0.01)))
                         .frame(width: 207, height: 500)
                         .onTapGesture {
+                          
+                                    
+         
+                            
+                            
                             self.countleft += 1
                             self.counttotal += 1
                             stackOfOperation.append("left")
@@ -184,5 +190,7 @@ struct AdditionGameView: View {
             }
 
         }
+    
+
 }
 
