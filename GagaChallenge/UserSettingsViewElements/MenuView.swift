@@ -25,7 +25,6 @@ struct MenuView: View {
     
     var picture: String {
         appModel.user?.picture ?? ""
-
     }
 
     init(appModel: AppModel) {
@@ -45,6 +44,11 @@ struct MenuView: View {
                 ) {
                     EmptyView()
                 }
+
+                NavigationLink(
+                    "",
+                    destination: currentGameView,
+                    isActive: $showGame)
                 //-Show the game if we tapped on menu
 
                 VStack {

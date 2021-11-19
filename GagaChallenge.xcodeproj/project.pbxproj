@@ -18,7 +18,7 @@
 		77261ECA2743BEBE0076CA09 /* AVManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77261EC92743BEBE0076CA09 /* AVManager.swift */; };
 		774A3A65273A810600067A76 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774A3A64273A810600067A76 /* ProfileView.swift */; };
 		774A3A9E273E811500067A76 /* AgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774A3A9D273E811500067A76 /* AgeView.swift */; };
-		774A3AA0273E8B7300067A76 /* ExtensionsAndGeneralsFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774A3A9F273E8B7300067A76 /* ExtensionsAndGeneralsFunctions.swift */; };
+		774A3AA0273E8B7300067A76 /* ExtensionsAndGenerals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774A3A9F273E8B7300067A76 /* ExtensionsAndGenerals.swift */; };
 		774A3AA22742338600067A76 /* DownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774A3AA12742338600067A76 /* DownloadView.swift */; };
 		774A3AA4274235E600067A76 /* download.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 774A3AA3274235E600067A76 /* download.mp4 */; };
 		774A3AA927427EDD00067A76 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774A3AA827427EDD00067A76 /* MenuView.swift */; };
@@ -42,7 +42,7 @@
 		77261EC92743BEBE0076CA09 /* AVManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVManager.swift; sourceTree = "<group>"; };
 		774A3A64273A810600067A76 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		774A3A9D273E811500067A76 /* AgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeView.swift; sourceTree = "<group>"; };
-		774A3A9F273E8B7300067A76 /* ExtensionsAndGeneralsFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsAndGeneralsFunctions.swift; sourceTree = "<group>"; };
+		774A3A9F273E8B7300067A76 /* ExtensionsAndGenerals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsAndGenerals.swift; sourceTree = "<group>"; };
 		774A3AA12742338600067A76 /* DownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadView.swift; sourceTree = "<group>"; };
 		774A3AA3274235E600067A76 /* download.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = download.mp4; sourceTree = "<group>"; };
 		774A3AA7274262B400067A76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -88,14 +88,13 @@
 				770F71412739469A00DB9D62 /* GagaChallengeApp.swift */,
 				770F71432739469A00DB9D62 /* ContentView.swift */,
 				774A3A9C273E80FF00067A76 /* UserSettingsViewElements */,
-				771D96742743DB0F0063BFE1 /* GamesView */,
-				774A3AA12742338600067A76 /* DownloadView.swift */,
-				7774CFD1273A6C580093853B /* AppModel.swift */,
+				771D96742743DB0F0063BFE1 /* Views */,
 				77261EC92743BEBE0076CA09 /* AVManager.swift */,
+				7774CFD1273A6C580093853B /* AppModel.swift */,
 				7774CFD4273A6C650093853B /* Model.swift */,
-				774A3A9F273E8B7300067A76 /* ExtensionsAndGeneralsFunctions.swift */,
 				770F714A2739469B00DB9D62 /* Persistence.swift */,
 				7774CFD6273A6D100093853B /* ViewModifiersExtensions.swift */,
+				774A3A9F273E8B7300067A76 /* ExtensionsAndGenerals.swift */,
 				770F71452739469B00DB9D62 /* Assets.xcassets */,
 				774A3AA3274235E600067A76 /* download.mp4 */,
 				770F714C2739469B00DB9D62 /* GagaChallenge.xcdatamodeld */,
@@ -112,14 +111,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		771D96742743DB0F0063BFE1 /* GamesView */ = {
+		771D96742743DB0F0063BFE1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				774A3AA12742338600067A76 /* DownloadView.swift */,
 				771D96752743DB740063BFE1 /* MultiplicationView.swift */,
 				42DF259F2745118B002B33B7 /* AdditionView.swift */,
 				77DC104D274797FF00D3BBD6 /* CommonViews.swift */,
 			);
-			path = GamesView;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		774A3A9C273E80FF00067A76 /* UserSettingsViewElements */ = {
@@ -218,7 +218,7 @@
 				770F71422739469A00DB9D62 /* GagaChallengeApp.swift in Sources */,
 				7774CFD7273A6D100093853B /* ViewModifiersExtensions.swift in Sources */,
 				7774CFD3273A6C580093853B /* AppModel.swift in Sources */,
-				774A3AA0273E8B7300067A76 /* ExtensionsAndGeneralsFunctions.swift in Sources */,
+				774A3AA0273E8B7300067A76 /* ExtensionsAndGenerals.swift in Sources */,
 				774A3AA927427EDD00067A76 /* MenuView.swift in Sources */,
 				771D96762743DB740063BFE1 /* MultiplicationView.swift in Sources */,
 				774A3AA22742338600067A76 /* DownloadView.swift in Sources */,

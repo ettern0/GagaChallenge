@@ -9,22 +9,21 @@ struct SystemImageView: View {
         Image(systemName:systemName)
             .resizable()
             .frame(width: size, height: size)
-            .foregroundColor(Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)))
+            .foregroundColor(getGeneralColor())
     }
 }
 
-
 struct SignView: View {
 
-    var digit: String
     var size: CGFloat
+    var value: String
 
     var body: some View {
 
-        Text(" \(digit) ")
+        Text(" \(value) ")
             .font(.system(size: size))
-           // .fontWeight(.bold)
-            .foregroundColor(Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)))
+            .fontWeight(.bold)
+            .foregroundColor(getGeneralColor())
     }
 }
 
@@ -54,20 +53,31 @@ struct ButtonTextView: View {
     var size: CGFloat
     var sizeOfText: CGFloat
     var value = ""
-    var signColor: Color = .white
-    var backgroundColor: Color = .green
 
     var body: some View {
         Button {
-
         } label: {
             Text(value)
-                .font(.system(size: sizeOfText))
-                .frame(width: size, height: size)
-                .foregroundColor(signColor)
-                .frame(width: size * 1.2, height: size * 1.2)
-                .background(RoundedRectangle(cornerRadius: 10).foregroundColor(backgroundColor))
+
         }
+        .modifier(ButtonTextViewModifier(sizeOfButton: size, sizeOfText: sizeOfText))
     }
 }
 
+struct ButtonTextViewModifier: ViewModifier{
+
+    var sizeOfButton: CGFloat
+    var sizeOfText: CGFloat
+
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: sizeOfText))
+            .frame(width: sizeOfButton, height: sizeOfButton)
+            .foregroundColor(.white)
+            .frame(width: sizeOfButton * 1.2, height: sizeOfButton * 1.2)
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .foregroundColor(.green)
+                    .opacity(0.9))
+    }
+}
