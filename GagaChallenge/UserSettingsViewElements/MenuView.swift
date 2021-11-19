@@ -73,7 +73,7 @@ struct MenuView: View {
                     HStack{
                         Button(action: {
                             self.showGame = true
-                            self.currentGameView = AnyView(AdditionGameView())
+                            self.currentGameView = AnyView(AdditionGameView(showGame: $showGame))
                         }) {
                             Image(systemName:"plus")
 
