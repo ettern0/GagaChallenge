@@ -9,8 +9,11 @@
 import SwiftUI
 
 
+
 struct AdditionGameView: View {
-  
+    @State var countleft: Int = 0
+    @State var countright: Int = 0
+    @State var counttotal: Int = 0
     
     var body: some View {
         
@@ -18,57 +21,38 @@ struct AdditionGameView: View {
             
             ZStack{
                 
-                
             
-            HStack {
-                Rectangle()
-                    .fill(.white)
-                    .frame(width: 207, height: 500)
-                    .onTapGesture {
-                        print("left side tapped")
-                        
-                    }
-                
-                Rectangle()
-                    .fill(.clear)
-                    .frame(width: 207, height: 500)
-                    .onTapGesture {
-                    print("right side tapped")
-                }
-                
-            
-            }
-                    .padding(.top, -200)
-                    .padding(.leading, 0)
-            VStack {
+                VStack {
                     
                 
-                    Capsule()
+                Capsule()
                     .fill(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)), Color(#colorLiteral(red: 0.6745098039, green: 0.9843137255, blue: 0.5568627451, alpha: 1))]), startPoint: .top, endPoint: .bottom))
                     .frame(width: 6.0, height: 150.0)
-                
+                    .padding(.top,-200)
+                    
                     
                 
-                Image(systemName:"plus")
-                    
+                    Image(systemName:"plus")
                     .resizable()
                     .frame(width: 80.0, height: 80.0)
                     .foregroundColor(Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)))
                     .frame(width: 150.0, height: 150.0)
                     .padding(.horizontal)
+                    .padding(.top, -50)
                 
                 
                     Capsule()
                     .fill(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)), Color(#colorLiteral(red: 0.6745098039, green: 0.9843137255, blue: 0.5568627451, alpha: 1))]), startPoint: .top, endPoint: .bottom))
                     .frame(width: 6.0, height: 150.0)
-                    
+//                    .padding(.top, -200)
                 
                 
                     Capsule()
                     .fill(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)), Color(#colorLiteral(red: 0.6745098039, green: 0.9843137255, blue: 0.5568627451, alpha: 1))]), startPoint: .leading, endPoint: .trailing))
                     .frame(width: 360.0, height: 6.0)
-                    
-                                
+//                    .padding(.top, -200)
+                
+                Spacer(minLength: 50)
                 
 
                 Image(systemName:"equal")
@@ -76,17 +60,69 @@ struct AdditionGameView: View {
                     .frame(width: 60, height: 40)
                     .foregroundColor(Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)))
                     .onTapGesture {
-                                print("equal")
-                            
+                                print(" \(counttotal) ")
                     }
+                    
+                    Spacer(minLength: 200)
+                    
+                    Capsule()
+                    .fill(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)), Color(#colorLiteral(red: 0.6745098039, green: 0.9843137255, blue: 0.5568627451, alpha: 1))]), startPoint: .leading, endPoint: .trailing))
+                    .frame(width: 360.0, height: 6.0)
+            }
+                    
+               
                 
-                                    
+            
+            
+                Text(" \(countleft) ")
+                    .font(.system(size: 60))
+                    .fontWeight(.bold)
+                    .padding(.leading, -180)
+                    .padding(.top, -300)
+                    .foregroundColor(Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)))
+                
+                
+                
+                Text(" \(countright) ")
+                    .font(.system(size: 60))
+                    .fontWeight(.bold)
+                    .padding(.leading, 230)
+                    .padding(.top, -300)
+                    .foregroundColor(Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)))
+                
+                HStack {
+                    
+                    
+                    Rectangle()
+                        .foregroundColor(Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 0.01)))
+                        .frame(width: 207, height: 500)
+                        .onTapGesture {
+                            self.countleft += 1
+                            self.counttotal += 1
+                            
+                            
+                            
+                        }
+                    
+                    Rectangle()
+                        .foregroundColor(Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 0.01)))
+                        .frame(width: 207, height: 500)
+                        .onTapGesture {
+                            self.countright += 1
+                            self.counttotal += 1
+                        
+                }
+               
+                
+            
             }
-            .padding(/*@START_MENU_TOKEN@*/.top, -100.0/*@END_MENU_TOKEN@*/)
+                    .padding(.top, -500)
+                    .padding(.leading, 0)
+                
             }
-
+            .padding(.all)
+            }
         }
     }
-}
    
 
