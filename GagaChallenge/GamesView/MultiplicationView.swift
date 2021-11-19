@@ -137,7 +137,6 @@ struct MultiplicationGameView: View {
             }
         }
     }
-
 }
 
 struct DrawShape: Shape {
