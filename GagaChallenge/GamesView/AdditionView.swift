@@ -102,7 +102,6 @@ struct AdditionGameView: View {
                             
                             
                             
-                            
                         }
                     
                     Rectangle()
