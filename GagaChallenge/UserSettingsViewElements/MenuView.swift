@@ -75,7 +75,7 @@ struct MenuView: View {
                             self.showGame = true
                             self.currentGameView = AnyView(AdditionGameView(showGame: $showGame))
                         }) {
-                            Image(systemName:"plus")
+                            Image("plus")
 
                                 .resizable()
                                 .frame(width: 80.0, height: 80.0)
@@ -87,9 +87,9 @@ struct MenuView: View {
 
                         }
                         Button(action:/*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
-                            Image(systemName:"minus")
+                            Image("minus")
                                 .resizable()
-                                .frame(width: 80.0, height: 10.0)
+                                .frame(width: 80.0, height: 15.0)
                                 .foregroundColor(Color.white)
                                 .frame(width: 150.0, height: 150.0)
                                 .background(RoundedRectangle(cornerRadius: 15).foregroundColor(.blue))
@@ -103,20 +103,21 @@ struct MenuView: View {
                             self.showGame = true
                             self.currentGameView = AnyView(MultiplicationGameView(showGame: $showGame))
                         }) {
-                            Image(systemName:"multiply")
+                            Image("multiply")
                                 .resizable()
-                                .frame(width: 70.0, height: 70.0)
+                                .frame(width: 60.0, height: 60.0)
                                 .foregroundColor(Color.white)
                                 .frame(width: 150.0, height: 150.0)
                                 .background(RoundedRectangle(cornerRadius: 15).foregroundColor(.green))
                                 .padding(.horizontal)
                                 .shadow(radius: 25)
                         }
+                        
+                        
                         Button(action:/*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
-                            Text(":")
-                            Image(systemName:"divide")
+                            Image("divide")
                                 .resizable()
-                                .frame(width: 70.0, height: 70.0)
+                                .frame(width: 80.0, height: 70.0)
                                 .foregroundColor(Color.white)
                                 .frame(width: 150.0, height: 150.0)
                                 .background(RoundedRectangle(cornerRadius: 15).foregroundColor(.yellow))
@@ -125,7 +126,7 @@ struct MenuView: View {
 
                         }
 
-                        .padding(.vertical)
+                    
                     }
                     .padding([.horizontal])
                     .padding(.top, 20.0)
