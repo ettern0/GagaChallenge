@@ -174,7 +174,6 @@ struct ProfileView: View {
                                 .onTapGesture {
                                     self.picture = _sign
                                 }
-
                         }
                     }
                     .padding(.horizontal)
