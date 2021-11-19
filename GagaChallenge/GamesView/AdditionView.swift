@@ -14,17 +14,25 @@ struct AdditionGameView: View {
     @State var countleft: Int = 0
     @State var countright: Int = 0
     @State var counttotal: Int = 0
-    
+    @Binding var showGame: Bool
+    @State var stackOfOperation: [String] = []
+   
+            
     var body: some View {
         
         NavigationView {
+ 
+
+                      
             
             ZStack{
                 
             
                 VStack {
                     
-                
+                Spacer(minLength: 100)
+                    
+                    
                 Capsule()
                     .fill(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)), Color(#colorLiteral(red: 0.6745098039, green: 0.9843137255, blue: 0.5568627451, alpha: 1))]), startPoint: .top, endPoint: .bottom))
                     .frame(width: 6.0, height: 150.0)
@@ -99,7 +107,7 @@ struct AdditionGameView: View {
                         .onTapGesture {
                             self.countleft += 1
                             self.counttotal += 1
-                            
+                            stackOfOperation.append("left")
                             
                             
                         }
@@ -110,6 +118,7 @@ struct AdditionGameView: View {
                         .onTapGesture {
                             self.countright += 1
                             self.counttotal += 1
+                            stackOfOperation.append("right")
                         
                 }
                
@@ -120,9 +129,60 @@ struct AdditionGameView: View {
                     .padding(.leading, 0)
                 
             }
-            .padding(.all)
+            
+//            .padding(.all)
             }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(
+            leading: backButton,
+            trailing:
+                HStack {
+
+                    undoButton
+                    clearButton
+
+                    Spacer()
+                })
+
+    }
+    
+    var undoButton: some View{
+        Button {
+            if let operation = stackOfOperation.last {
+              
+                if operation == "left" {
+                    countleft -= 1
+                } else {
+                    countright -= 1
+                }
+                
+                counttotal -= 1
+                stackOfOperation.removeLast()
+            }
+            
+        }
+    label:{
+        Image(systemName: "arrow.uturn.backward.circle")
+    }
+}
+    
+    var backButton: some View {
+        Button {
+            showGame.toggle()
+        } label: {
+            Text("Back")
         }
     }
-   
+        var clearButton: some View {
+            Button {
+                counttotal = 0
+                countleft = 0
+                countright = 0
+                stackOfOperation.removeAll()
+            } label: {
+                Image(systemName: "trash")
+            }
+
+        }
+}
 
