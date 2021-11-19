@@ -7,7 +7,8 @@ struct MultiplicationGameView: View {
     @State var arrayOfCountingOfPointsIntersections: [CGPoint: Int] = [:]
     @Binding var showGame: Bool
 
-    //let firstMultiplicationDigit = Int().words.randomElement()
+    let firstMultiplicationDigit = Int.random(in: 1...5)
+    let secondMultiplicationDigit = Int.random(in: 1...5)
 
     var pointsIntersection: [CGPoint] {
         guard curves.count >= 2 else { return [] }
@@ -28,11 +29,13 @@ struct MultiplicationGameView: View {
         pointsIntersection.count
     }
 
-
-
     var body: some View {
         NavigationView {
+//                            HStack {
+//                               Text("\(firstMultiplicationDigit) * \(secondMultiplicationDigit)")
+//                            }
             drawSection
+            //   Spacer()
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(
@@ -93,7 +96,7 @@ struct MultiplicationGameView: View {
     var undoButton: some View {
         Button {
             if curves.count > 1 {
-               curves.remove(at: curves.endIndex - 2)
+                curves.remove(at: curves.endIndex - 2)
                 arrayOfCountingOfPointsIntersections.removeAll()
                 refreshArrayOfCountingOfPointsIntersections()
             }
