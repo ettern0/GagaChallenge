@@ -132,6 +132,7 @@ struct MenuView: View {
                     .padding(.bottom, 120)
                 }
             }
+
         }
         .sheet(isPresented: $showProfile) {
             ProfileView(appModel: appModel, showProfile: $showProfile)
