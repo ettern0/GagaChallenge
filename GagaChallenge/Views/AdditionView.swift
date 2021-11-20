@@ -139,15 +139,14 @@ struct AdditionGameView: View {
                     ForEach(0...countleft, id:\.self) { index in
                         
                         CirclesView(index: index, offset: logicalFunction(size: proxy.size))
-                            
+//                            .blur(radius: 1)
+                            .animation(.default)
                     }
                     
                 }
                 .background(Color.clear)
                 .ignoresSafeArea()
-                
-            
-            
+                .frame(width: 100, height: 500)
             
             }
             
@@ -220,41 +219,20 @@ struct AdditionGameView: View {
 }
 
 struct CirclesView: View {
-    @ObservedObject var appModel: AppModel
-    @State var showProfile: Bool
-    let sizeOfRROfDescription = CGSize(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.3)
-    var sizeOfPictureDescription: CGSize { CGSize(width: sizeOfRROfDescription.width*0.5, height: sizeOfRROfDescription.height*0.5) }
-
-    var color: Color {
-    if let _color = appModel.user?.color {
-        return  getColor(data: _color)
-    }
-    
-    return Color(.black)
-}
     let index: Int
     let offset: CGSize
-    
-    var picture: String {
-        appModel.user?.picture ?? ""
 
+        var body: some View {
+       
+                Circle()
+                .frame(width: 30, height: 30, alignment: .center)
+                .foregroundColor(.red)
+                .overlay(Text(String(describing: index)))
+                .offset(offset)
+            
+                                   
+    
     }
-    
-    var body: some View {
-        ZStack {
-            Circle()
-                .foregroundColor(color)
-                .frame(width: sizeOfPictureDescription.width * 1.3, height: sizeOfPictureDescription.height * 1.3)
-            Image(picture)
-                .resizable()
-                .scaledToFit()
-                .foregroundColor(.white)
-                .frame(width: sizeOfPictureDescription.width, height: sizeOfPictureDescription.height)
-                .onLongPressGesture {
-                    self.showProfile.toggle()
-                                    }
-    
-                        }
-            }
+        
 
 }
