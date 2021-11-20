@@ -8,6 +8,7 @@ struct MultiplicationGameView: View {
     @Binding var showGame: Bool
     @State var firstMultiplicationDigit = Int.random(in: 1...5)
     @State var secondMultiplicationDigit = Int.random(in: 1...5)
+    @State var animateWrongAnswer: Bool = false
     @State var answers: [Answer] = []
     let sizeOfTopAnButton = CGSize(width: UIScreen.main.bounds.width * 0.95, height: UIScreen.main.bounds.height * 0.1)
     var pointsIntersection: [CGPoint] {
@@ -49,10 +50,15 @@ struct MultiplicationGameView: View {
                             Button(action: {
                                 if answers[index].rightAnswer {
                                     refreshGame()
+                                } else {
+                                    animateWrongAnswer.toggle()
                                 }
                             }, label: {
                                 Text(answers[index].stringValue)
-                            }).modifier(ButtonTextViewModifier(sizeOfButton: sizeOfTopAnButton.height * 0.7, sizeOfText: 50))
+                            })
+                                .modifier(ButtonTextViewModifier(sizeOfButton: sizeOfTopAnButton.height * 0.7, sizeOfText: 50, rectColor: answers[index].color))
+                                .offset(x: animateWrongAnswer ? 0 : -5)
+                                .animation(Animation.default.repeatCount(3).speed(3), value: animateWrongAnswer)
 
                         }
                     }
@@ -86,14 +92,13 @@ struct MultiplicationGameView: View {
     var drawSection: some View {
 
         let width = UIScreen.main.bounds.width
-        let height = UIScreen.main.bounds.height - (sizeOfTopAnButton.height * 3)
+        let height = UIScreen.main.bounds.height - (sizeOfTopAnButton.height * 3.5)
 
        return ZStack {
            Rectangle()
                .foregroundColor(.white)
-               .border(getGeneralColor(), width: 1)
-
-               .gesture(DragGesture().onChanged( { value in
+               //.border(getGeneralColor(), width: 1)
+                .gesture(DragGesture().onChanged( { value in
                    self.addNewPoint(value, borderX: width, borderY: height)
                }).onEnded( { value in
                    curves.append([])
@@ -114,7 +119,7 @@ struct MultiplicationGameView: View {
                         .position(x: point.x,
                                   y: point.y)
                         .frame(width: 30, height: 30)
-                        .foregroundColor(.green)
+                        .foregroundColor((Color.random))
                         .overlay {
                             if let number = numberOfPoint {
                                 Text("\(number)")
@@ -123,7 +128,7 @@ struct MultiplicationGameView: View {
                             }
                         }
                         .blur(radius: 1)
-                        .animation(.default)
+                        .animation(.default, value: pointsIntersection)
                 }
                 .onAppear {
                     refreshArrayOfCountingOfPointsIntersections()
@@ -157,24 +162,10 @@ struct MultiplicationGameView: View {
         }
     }
 
-//    init(showGame:Binding<Bool>) {
-//
-//        self._showGame = showGame
-//        //+init array of answers
-//
-//        self.answers = []
-//        let resultOfMultiply: Int = firstMultiplicationDigit * secondMultiplicationDigit
-//        self.answers.append(Answer(value: resultOfMultiply, rightAnswer: true))
-//        for _ in 0...2 {
-//            self.answers.append(Answer(value: Int.randomExept(of: resultOfMultiply, range: 0...25)))
-//        }
-//        self.answers.shuffle()
-//        //-init array of answers
-//    }
-//
     struct Answer {
         var value: Int
         var rightAnswer: Bool = false
+        var color: Color?
         var stringValue: String {
             value.stringValue
         }
@@ -197,9 +188,14 @@ struct MultiplicationGameView: View {
     private func refreshAnswers() {
         if answers.isEmpty {
             let resultOfMultiply: Int = firstMultiplicationDigit * secondMultiplicationDigit
-            answers.append(Answer(value: resultOfMultiply, rightAnswer: true))
+            var arrayOfColors: [Color]? = [.yellow, .green, .blue, .red]
+            arrayOfColors?.shuffle()
+
+            answers.append(Answer(value: resultOfMultiply, rightAnswer: true, color: arrayOfColors?.first))
+            arrayOfColors?.removeFirst()
             for _ in 0...2 {
-                answers.append(Answer(value: Int.randomExept(of: resultOfMultiply, range: 0...25)))
+                answers.append(Answer(value: Int.randomExept(of: resultOfMultiply, range: 0...25), color: arrayOfColors?.first))
+                arrayOfColors?.removeFirst()
             }
             answers.shuffle()
         }
@@ -209,13 +205,13 @@ struct MultiplicationGameView: View {
         firstMultiplicationDigit = Int.random(in: 1...5)
         secondMultiplicationDigit = Int.random(in: 1...5)
         clearGame()
-        refreshAnswers()
     }
 
     private func clearGame() {
         curves = [[]]
         arrayOfCountingOfPointsIntersections.removeAll()
         answers.removeAll()
+        refreshAnswers()
     }
 }
 
