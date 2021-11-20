@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+    
 
 
 struct AdditionGameView: View {
@@ -16,6 +17,8 @@ struct AdditionGameView: View {
     @State var counttotal: Int = 0
     @Binding var showGame: Bool
     @State var stackOfOperation: [String] = []
+    
+ 
             
     var body: some View {
         
@@ -25,6 +28,7 @@ struct AdditionGameView: View {
                       
             
             ZStack{
+                
                 
             
                 VStack {
@@ -106,10 +110,6 @@ struct AdditionGameView: View {
                         .foregroundColor(Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 0.01)))
                         .frame(width: 207, height: 500)
                         .onTapGesture {
-                          
-                                    
-         
-                            
                             
                             self.countleft += 1
                             self.counttotal += 1
@@ -133,11 +133,27 @@ struct AdditionGameView: View {
             }
                     .padding(.top, -500)
                     .padding(.leading, 0)
+               
+                GeometryReader { proxy in
+                    
+                    ForEach(0...countleft, id:\.self) { index in
+                        
+                        CirclesView(index: index, offset: logicalFunction(size: proxy.size))
+                            
+                    }
+                    
+                }
+                .background(Color.clear)
+                .ignoresSafeArea()
                 
+            
+            
+            
             }
             
 //            .padding(.all)
             }
+        
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(
             leading: backButton,
@@ -190,7 +206,55 @@ struct AdditionGameView: View {
             }
 
         }
+    func logicalFunction(size: CGSize) -> CGSize {
+        
+        // Do your works here!
+        
+        let width: CGFloat = CGFloat.random(in: 0.0...size.width)
+        let height: CGFloat = CGFloat.random(in: 0.0...size.height)
+        
+        return CGSize(width: width, height: height)
+        
+    }
     
-
 }
 
+struct CirclesView: View {
+    @ObservedObject var appModel: AppModel
+    @State var showProfile: Bool
+    let sizeOfRROfDescription = CGSize(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.3)
+    var sizeOfPictureDescription: CGSize { CGSize(width: sizeOfRROfDescription.width*0.5, height: sizeOfRROfDescription.height*0.5) }
+
+    var color: Color {
+    if let _color = appModel.user?.color {
+        return  getColor(data: _color)
+    }
+    
+    return Color(.black)
+}
+    let index: Int
+    let offset: CGSize
+    
+    var picture: String {
+        appModel.user?.picture ?? ""
+
+    }
+    
+    var body: some View {
+        ZStack {
+            Circle()
+                .foregroundColor(color)
+                .frame(width: sizeOfPictureDescription.width * 1.3, height: sizeOfPictureDescription.height * 1.3)
+            Image(picture)
+                .resizable()
+                .scaledToFit()
+                .foregroundColor(.white)
+                .frame(width: sizeOfPictureDescription.width, height: sizeOfPictureDescription.height)
+                .onLongPressGesture {
+                    self.showProfile.toggle()
+                                    }
+    
+                        }
+            }
+
+}
