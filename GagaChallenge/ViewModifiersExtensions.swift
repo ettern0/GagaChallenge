@@ -80,7 +80,6 @@ struct SignView: View {
     var value: String
 
     var body: some View {
-
         Text(" \(value) ")
             .font(.system(size: size))
             .fontWeight(.bold)
@@ -123,6 +122,10 @@ struct ButtonTextView: View {
         }
         .modifier(ButtonTextViewModifier(sizeOfButton: size, sizeOfText: sizeOfText))
     }
+}
+
+func getArrayOfGeneralColors() -> [Color] {
+    [.yellow, .green, .blue, .red]
 }
 
 struct DrawShape: Shape {

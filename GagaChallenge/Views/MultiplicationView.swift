@@ -4,7 +4,7 @@ import SwiftUI
 struct MultiplicationGameView: View {
 
     @State var curves: [[CGPoint]] = [[]]
-    @State var arrayOfCountingOfPointsIntersections: [CGPoint: Int] = [:]
+    @State var pointsIntersectionsInfo: [CGPoint: (number:Int, color: Color)] = [:]
     @Binding var showGame: Bool
     @State var firstMultiplicationDigit = Int.random(in: 1...5)
     @State var secondMultiplicationDigit = Int.random(in: 1...5)
@@ -16,21 +16,32 @@ struct MultiplicationGameView: View {
     }
 
     var body: some View {
-        VStack(spacing: 0) {
-            example
-            Spacer()
-            drawSection
-            Spacer()
-            answersView
+        ZStack {
+            Rectangle()
+                .foregroundColor(.white)
+            VStack(spacing: 0) {
+                example
+                Spacer()
+                drawSection
+                Spacer()
+                answersView
+            }
+            .padding(.top, -50)
+            .navigationBarItems(
+                trailing:
+                    HStack {
+                        undoButton
+                        clearButton
+                        Spacer()
+                    })
+
+            Image("panda")
+                .resizable()
+                .scaledToFit()
+                .frame(width: sizeOfTopAnButton.width, height: sizeOfTopAnButton.height, alignment: .leading)
+                .position(x: sizeOfTopAnButton.width/2 + 10, y: sizeOfTopAnButton.height)
         }
-        .padding(.top, -50)
-        .navigationBarItems(
-            trailing:
-                HStack {
-                    undoButton
-                    clearButton
-                    Spacer()
-                })
+
     }
 
     var answersView: some View {
@@ -68,25 +79,19 @@ struct MultiplicationGameView: View {
 
     var example: some View {
 
-        let spacing = sizeOfTopAnButton.width * 0.2 / CGFloat(4)
-        let rows: [GridItem] = [GridItem()]
-        let views: [AnyView] = [AnyView(SignView(size: 50, value: firstMultiplicationDigit.stringValue)),
-                                AnyView(SystemImageView(size: 30, systemName: "multiply")),
-                                AnyView(SignView(size: 50, value: secondMultiplicationDigit.stringValue)),
-                                AnyView(SystemImageView(size: 20, systemName: "equal")),
-                                AnyView(SystemImageView(size: 40, systemName: "questionmark"))]
-
-        return  RoundedRectangle(cornerRadius: 10)
-            .frame(width: sizeOfTopAnButton.width,
-                   height: sizeOfTopAnButton.height*0.8)
-            .foregroundColor(.white)
-            .overlay {
-                LazyHGrid(rows: rows, alignment: .center, spacing: spacing) {
-                    ForEach(0..<views.count) { index in
-                        views[index]
-                    }
+        Group {
+            ZStack {
+                Image("cloud")
+                    .resizable()
+                    .frame(width: sizeOfTopAnButton.width * 0.8, height: 100)
+                HStack {
+                    SignView(size: 50, value: firstMultiplicationDigit.stringValue)
+                    SystemImageView(size: 30, systemName: "multiply")
+                    SignView(size: 50, value: secondMultiplicationDigit.stringValue)
                 }
             }
+
+        }
     }
 
     var drawSection: some View {
@@ -97,7 +102,6 @@ struct MultiplicationGameView: View {
        return ZStack {
            Rectangle()
                .foregroundColor(.white)
-               //.border(getGeneralColor(), width: 1)
                 .gesture(DragGesture().onChanged( { value in
                    self.addNewPoint(value, borderX: width, borderY: height)
                }).onEnded( { value in
@@ -113,22 +117,21 @@ struct MultiplicationGameView: View {
                 GeometryReader { proxy in
 
                     let point = pointsIntersection[index]
-                    let numberOfPoint = arrayOfCountingOfPointsIntersections[point]
+                    if let pointInfo = pointsIntersectionsInfo[point] {
 
-                    Circle()
-                        .position(x: point.x,
-                                  y: point.y)
-                        .frame(width: 30, height: 30)
-                        .foregroundColor((Color.random))
-                        .overlay {
-                            if let number = numberOfPoint {
-                                Text("\(number)")
-                                    .position(x: point.x,
-                                              y: point.y)
+                        Circle()
+                            .position(x: point.x,
+                                      y: point.y)
+                            .frame(width: 30, height: 30)
+                            .foregroundColor((pointInfo.color))
+                            .overlay {
+                                    Text("\(pointInfo.number)")
+                                        .position(x: point.x,
+                                                  y: point.y)
                             }
-                        }
-                        .blur(radius: 1)
-                        .animation(.default, value: pointsIntersection)
+                            .blur(radius: 1)
+                            .animation(.default, value: pointsIntersection)
+                    }
                 }
                 .onAppear {
                     refreshArrayOfCountingOfPointsIntersections()
@@ -142,7 +145,7 @@ struct MultiplicationGameView: View {
         Button {
             if curves.count > 1 {
                 curves.remove(at: curves.endIndex - 2)
-                arrayOfCountingOfPointsIntersections.removeAll()
+                pointsIntersectionsInfo.removeAll()
                 refreshArrayOfCountingOfPointsIntersections()
             }
 
@@ -179,8 +182,11 @@ struct MultiplicationGameView: View {
 
     private func refreshArrayOfCountingOfPointsIntersections () {
         pointsIntersection.forEach { point in
-            if arrayOfCountingOfPointsIntersections[point] == nil {
-                arrayOfCountingOfPointsIntersections[point] = arrayOfCountingOfPointsIntersections.count + 1
+            if pointsIntersectionsInfo[point] == nil {
+                var arrayOfColors: [Color] = getArrayOfGeneralColors()
+                //Excluse the blue, because drawshapes id blue
+                arrayOfColors = arrayOfColors.filter{$0 != .blue}
+                pointsIntersectionsInfo[point] = (number: pointsIntersectionsInfo.count + 1, color: arrayOfColors.randomElement()!)
             }
         }
     }
@@ -188,7 +194,7 @@ struct MultiplicationGameView: View {
     private func refreshAnswers() {
         if answers.isEmpty {
             let resultOfMultiply: Int = firstMultiplicationDigit * secondMultiplicationDigit
-            var arrayOfColors: [Color]? = [.yellow, .green, .blue, .red]
+            var arrayOfColors: [Color]? = getArrayOfGeneralColors()
             arrayOfColors?.shuffle()
 
             answers.append(Answer(value: resultOfMultiply, rightAnswer: true, color: arrayOfColors?.first))
@@ -209,7 +215,7 @@ struct MultiplicationGameView: View {
 
     private func clearGame() {
         curves = [[]]
-        arrayOfCountingOfPointsIntersections.removeAll()
+        pointsIntersectionsInfo.removeAll()
         answers.removeAll()
         refreshAnswers()
     }
