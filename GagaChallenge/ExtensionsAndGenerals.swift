@@ -32,6 +32,25 @@ extension Color {
     }
 }
 
+func getGeneralColor() -> Color {
+    Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1))
+}
+
+func getIntersectionsOfPoints(points: [[CGPoint]]) -> [CGPoint] {
+
+    guard points.count >= 2 else { return [] }
+
+    var intersections = [CGPoint]()
+    for i in 0 ... points.count - 2 {
+        for j in i + 1 ... points.count - 1 {
+            let (line1, line2) = (points[i], points[j])
+            let intersection = line1.intersections(with: line2)
+            intersections.append(contentsOf: intersection)
+        }
+    }
+    return intersections
+}
+
 extension UIBezierPath {
     convenience init?(points: [CGPoint]) {
         let path = UIBezierPath()
@@ -132,3 +151,5 @@ extension Int {
         }
     }
 }
+
+
