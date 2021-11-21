@@ -87,21 +87,6 @@ struct AdditionGameView: View {
                 
             
             
-                Text(" \(countleft) ")
-                    .font(.system(size: 60))
-                    .fontWeight(.bold)
-                    .padding(.leading, -180)
-                    .padding(.top, -300)
-                    .foregroundColor(Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)))
-                
-                
-                
-                Text(" \(countright) ")
-                    .font(.system(size: 60))
-                    .fontWeight(.bold)
-                    .padding(.leading, 230)
-                    .padding(.top, -300)
-                    .foregroundColor(Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)))
                 
                 HStack {
                     
@@ -123,7 +108,7 @@ struct AdditionGameView: View {
                         .frame(width: 207, height: 500)
                         .onTapGesture {
                             self.countright += 1
-                            self.counttotal += 1
+//                            self.counttotal += 1
                             stackOfOperation.append("right")
                         
                 }
@@ -140,13 +125,38 @@ struct AdditionGameView: View {
                         
                         CirclesView(index: index, offset: logicalFunction(size: proxy.size))
 //                            .blur(radius: 1)
-                            .animation(.default)
+                            .animation(.easeIn(duration: 0.5))
+                            
+                            
+                    }
+                    ForEach(0...countright, id:\.self) { index in
+                        
+                        CirclesrView(index: index, offset: logicalFunction(size: proxy.size))
+//                            .blur(radius: 1)
+                            .animation(.easeIn(duration: 0.5))
                     }
                     
                 }
                 .background(Color.clear)
                 .ignoresSafeArea()
-                .frame(width: 100, height: 500)
+                .frame(width: 170, height: 400)
+
+                Text(" \(countleft) ")
+                    .font(.system(size: 60))
+                    .fontWeight(.bold)
+                    .padding(.leading, -180)
+                    .padding(.top, -300)
+                    .foregroundColor(Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)))
+                
+                
+                
+                Text(" \(countright) ")
+                    .font(.system(size: 60))
+                    .fontWeight(.bold)
+                    .padding(.leading, 230)
+                    .padding(.top, -300)
+                    .foregroundColor(Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)))
+                
             
             }
             
@@ -225,11 +235,29 @@ struct CirclesView: View {
         var body: some View {
        
                 Circle()
-                .frame(width: 30, height: 30, alignment: .center)
+                .frame(width: 30, height: 30, alignment: .topTrailing)
                 .foregroundColor(.red)
-                .overlay(Text(String(describing: index)))
+                .overlay(Text(String(describing: index+1)))
                 .offset(offset)
-            
+                .position(x: -105, y: -250)
+                                   
+    
+    }
+        
+
+}
+struct CirclesrView: View {
+    let index: Int
+    let offset: CGSize
+
+        var body: some View {
+       
+                Circle()
+                .frame(width: 30, height: 30, alignment: .topLeading)
+                .foregroundColor(.red)
+                .overlay(Text(String(describing: index+1)))
+                .offset(offset)
+                .position(x: 110, y: -250)
                                    
     
     }
