@@ -90,7 +90,10 @@ struct MenuView: View {
                                 .padding(.horizontal)
 
                         }
-                        Button(action:/*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+                        Button(action: {
+                            self.showGame = true
+                            self.currentGameView = AnyView(SubtractionGameView(showGame: $showGame))
+                        }) {
                             Image("minus")
                                 .resizable()
                                 .frame(width: 80.0, height: 15.0)
