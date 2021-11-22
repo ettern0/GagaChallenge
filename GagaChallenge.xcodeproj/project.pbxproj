@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		425B0EF8274AD9AF0014BBD6 /* SubtractionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B0EF7274AD9AF0014BBD6 /* SubtractionView.swift */; };
 		42DF25A02745118B002B33B7 /* AdditionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DF259F2745118B002B33B7 /* AdditionView.swift */; };
 		770F71422739469A00DB9D62 /* GagaChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770F71412739469A00DB9D62 /* GagaChallengeApp.swift */; };
 		770F71442739469A00DB9D62 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770F71432739469A00DB9D62 /* ContentView.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		425B0EF7274AD9AF0014BBD6 /* SubtractionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtractionView.swift; sourceTree = "<group>"; };
 		42DF259F2745118B002B33B7 /* AdditionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionView.swift; sourceTree = "<group>"; };
 		770F713E2739469A00DB9D62 /* GagaChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GagaChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		770F71412739469A00DB9D62 /* GagaChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GagaChallengeApp.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				774A3AA12742338600067A76 /* DownloadView.swift */,
 				771D96752743DB740063BFE1 /* MultiplicationView.swift */,
 				42DF259F2745118B002B33B7 /* AdditionView.swift */,
+				425B0EF7274AD9AF0014BBD6 /* SubtractionView.swift */,
 				77DEEC7A2748FEB100BE9472 /* DivisionView.swift */,
 			);
 			path = Views;
@@ -215,6 +218,7 @@
 				774A3AA927427EDD00067A76 /* MenuView.swift in Sources */,
 				771D96762743DB740063BFE1 /* MultiplicationView.swift in Sources */,
 				774A3AA22742338600067A76 /* DownloadView.swift in Sources */,
+				425B0EF8274AD9AF0014BBD6 /* SubtractionView.swift in Sources */,
 				774A3A9E273E811500067A76 /* AgeView.swift in Sources */,
 				77261ECA2743BEBE0076CA09 /* AVManager.swift in Sources */,
 			);
@@ -347,7 +351,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GagaChallenge/Preview Content\"";
-				DEVELOPMENT_TEAM = XJB6H4WXH3;
+				DEVELOPMENT_TEAM = HP5KN8K9AX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GagaChallenge/Info.plist;

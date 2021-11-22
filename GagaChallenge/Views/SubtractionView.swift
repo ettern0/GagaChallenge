@@ -1,17 +1,16 @@
 //
-//  AdditionView.swift
+//  SubtractionView.swift
 //  GagaChallenge
 //
-//  Created by Elio Fortunato on 17/11/21.
+//  Created by Elio Fortunato on 21/11/21.
 //
-
 
 import SwiftUI
 
     
 
 
-struct AdditionGameView: View {
+struct SubtractionGameView: View {
     @State var countleft: Int = 0
     @State var countright: Int = 0
     @State var counttotal: Int = 0
@@ -43,9 +42,9 @@ struct AdditionGameView: View {
                     
                     
                 
-                    Image(systemName:"plus")
+                    Image(systemName:"minus")
                     .resizable()
-                    .frame(width: 80.0, height: 80.0)
+                    .frame(width: 80.0, height: 15.0)
                     .foregroundColor(Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)))
                     .frame(width: 150.0, height: 150.0)
                     .padding(.horizontal)
@@ -107,9 +106,14 @@ struct AdditionGameView: View {
                         .foregroundColor(Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 0.01)))
                         .frame(width: 207, height: 500)
                         .onTapGesture {
+                            if countleft > countright {
                             self.countright += 1
-                            self.counttotal += 1
+                            self.counttotal -= 1
                             stackOfOperation.append("right")
+                            } else {
+                                self.countright += 0
+                                self.counttotal += 0
+                            }
                         
                 }
                
@@ -121,7 +125,7 @@ struct AdditionGameView: View {
                
                 GeometryReader { proxy in
                     
-                    ForEach(0...countleft, id:\.self) { index in
+                    ForEach(0...counttotal, id:\.self) { index in
                         
                         CirclesView(index: index, offset: logicalFunction(size: proxy.size))
 //                            .blur(radius: 1)
@@ -129,12 +133,7 @@ struct AdditionGameView: View {
                             
                             
                     }
-                    ForEach(0...countright, id:\.self) { index in
-                        
-                        CirclesrView(index: index, offset: logicalFunction(size: proxy.size))
-//                            .blur(radius: 1)
-                            .animation(.easeIn(duration: 0.5))
-                    }
+       
                     
                 }
                 .background(Color.clear)
@@ -187,7 +186,7 @@ struct AdditionGameView: View {
                     countright -= 1
                 }
                 
-                counttotal -= 1
+                counttotal += 1
                 stackOfOperation.removeLast()
             }
             
@@ -228,7 +227,7 @@ struct AdditionGameView: View {
     
 }
 
-struct CirclesView: View {
+struct Circles2View: View {
     let index: Int
     let offset: CGSize
 
@@ -246,21 +245,4 @@ struct CirclesView: View {
         
 
 }
-struct CirclesrView: View {
-    let index: Int
-    let offset: CGSize
 
-        var body: some View {
-       
-                Circle()
-                .frame(width: 30, height: 30, alignment: .topLeading)
-                .foregroundColor(.red)
-                .overlay(Text(String(describing: index)))
-                .offset(offset)
-                .position(x: 110, y: -250)
-                                   
-    
-    }
-        
-
-}
