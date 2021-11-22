@@ -170,15 +170,12 @@ struct AdditionGameView: View {
 //            .padding(.all)
             }
         
-        .navigationBarBackButtonHidden(true)
+//        .navigationBarBackButtonHidden(true)
         .navigationBarItems(
-            leading: backButton,
             trailing:
                 HStack {
-
                     undoButton
                     clearButton
-
                     Spacer()
                 })
 

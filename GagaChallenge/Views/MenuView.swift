@@ -10,7 +10,6 @@ struct MenuView: View {
     let sizeOfRROfDescription = CGSize(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.3)
     var sizeOfPictureDescription: CGSize { CGSize(width: sizeOfRROfDescription.width*0.5, height: sizeOfRROfDescription.height*0.5) }
     
-    
     var name: String {
         appModel.user?.name ?? ""
     }
@@ -42,7 +41,6 @@ struct MenuView: View {
                     "",
                     destination: currentGameView,
                     isActive: $showGame)
-
                     profileInfo
                     Spacer(minLength: 40)
                     buttonsView
@@ -85,12 +83,15 @@ struct MenuView: View {
             HStack {
                 Button(action: {
                     self.showGame = true
-                    self.currentGameView = AnyView(AdditionGameView(showGame: $showGame))
+                    self.currentGameView = AnyView(AdditionGameView(appModel: appModel, showGame: $showGame))
                 }) {
                     Image("plus")
                         .MenuModifeier(rectColor: .red, signWidth: 80, signHeight: 80)
                 }
-                Button(action:/*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+                Button(action: {
+                    self.showGame = true
+                    self.currentGameView = AnyView(SubtractionGameView(appModel: appModel, showGame: $showGame))
+                }) {
                     Image("minus")
                         .MenuModifeier(rectColor: .blue, signWidth: 80, signHeight: 15)
                 }
