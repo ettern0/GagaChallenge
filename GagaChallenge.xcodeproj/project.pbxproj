@@ -89,7 +89,6 @@
 				774A3AA7274262B400067A76 /* Info.plist */,
 				770F71412739469A00DB9D62 /* GagaChallengeApp.swift */,
 				770F71432739469A00DB9D62 /* ContentView.swift */,
-				774A3A9C273E80FF00067A76 /* UserSettingsViewElements */,
 				771D96742743DB0F0063BFE1 /* Views */,
 				77261EC92743BEBE0076CA09 /* AVManager.swift */,
 				7774CFD1273A6C580093853B /* AppModel.swift */,
@@ -116,6 +115,9 @@
 		771D96742743DB0F0063BFE1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				774A3A64273A810600067A76 /* ProfileView.swift */,
+				774A3AA827427EDD00067A76 /* MenuView.swift */,
+				774A3A9D273E811500067A76 /* AgeView.swift */,
 				774A3AA12742338600067A76 /* DownloadView.swift */,
 				771D96752743DB740063BFE1 /* MultiplicationView.swift */,
 				42DF259F2745118B002B33B7 /* AdditionView.swift */,
@@ -123,16 +125,6 @@
 				77DEEC7A2748FEB100BE9472 /* DivisionView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		774A3A9C273E80FF00067A76 /* UserSettingsViewElements */ = {
-			isa = PBXGroup;
-			children = (
-				774A3A64273A810600067A76 /* ProfileView.swift */,
-				774A3AA827427EDD00067A76 /* MenuView.swift */,
-				774A3A9D273E811500067A76 /* AgeView.swift */,
-			);
-			path = UserSettingsViewElements;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
