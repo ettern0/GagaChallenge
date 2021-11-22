@@ -41,7 +41,7 @@ struct Shake: GeometryEffect {
     }
 }
 
-struct ButtonTextViewModifier: ViewModifier{
+struct ButtonTextViewModifier: ViewModifier {
 
     var sizeOfButton: CGFloat
     var sizeOfText: CGFloat
@@ -57,6 +57,19 @@ struct ButtonTextViewModifier: ViewModifier{
                 RoundedRectangle(cornerRadius: 10)
                     .foregroundColor(rectColor ?? .green)
                     .opacity(0.9))
+    }
+}
+
+extension Image {
+    func MenuModifeier(rectColor: Color, signWidth: CGFloat, signHeight: CGFloat) -> some View {
+        self
+            .resizable()
+            .frame(width: signWidth, height: signHeight)
+            .foregroundColor(Color.white)
+            .frame(width: 150.0, height: 150.0)
+            .background(RoundedRectangle(cornerRadius: 15).foregroundColor(rectColor))
+            .padding(.horizontal)
+            .shadow(radius: 25)
     }
 }
 
