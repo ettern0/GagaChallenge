@@ -110,7 +110,7 @@ struct MultiplicationGameView: View {
             ForEach(curves.indices, id: \.self) { index in
                     DrawShape(points: curves[index])
                         .stroke(lineWidth: 5) // here you put width of lines
-                        .foregroundColor(.green)
+                        .foregroundColor(.blue)
             }
 
             ForEach(pointsIntersection.indices, id: \.self) { index in
@@ -118,7 +118,6 @@ struct MultiplicationGameView: View {
 
                     let point = pointsIntersection[index]
                     if let pointInfo = pointsIntersectionsInfo[point] {
-
                         Circle()
                             .position(x: point.x,
                                       y: point.y)
@@ -176,7 +175,8 @@ struct MultiplicationGameView: View {
             if pointsIntersectionsInfo[point] == nil {
                 var arrayOfColors: [Color] = getArrayOfGeneralColors()
                 //Excluse the blue, because drawshapes id blue
-                arrayOfColors = arrayOfColors.filter{$0 != .green}
+                arrayOfColors = arrayOfColors.filter{$0 != .blue
+                }
                 pointsIntersectionsInfo[point] = (number: pointsIntersectionsInfo.count + 1, color: arrayOfColors.randomElement()!)
             }
         }

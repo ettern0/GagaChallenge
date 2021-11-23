@@ -269,6 +269,7 @@ struct AdditionGameView: View {
                 }
             }
     }
+    
     private func refreshAnswers() {
 //        if answers.isEmpty {
         answers.removeAll()
@@ -312,15 +313,12 @@ struct CirclesView: View {
                         Image(picture)
                         .resizable()
                         .scaledToFit()
-                          
-                }
+                        }
                 .offset(offset)
                 .position(x: -105, y: -250)
-    
     }
-        
-
 }
+
 struct CirclesrView: View {
     var appModel: AppModel
     let index: Int
@@ -350,18 +348,6 @@ struct CirclesrView: View {
                 }
                 .offset(offset)
                 .position(x: 105, y: -250)
-    
-    }
-        
-
+        }
 }
-struct Answer {
-    var value: Int
-    var rightAnswer: Bool = false
-    var color: Color?
-    var stringValue: String {
-        value.stringValue
-    }
-}
-
 
