@@ -104,6 +104,7 @@ struct SubtractionGameView: View {
                             
                             self.countleft += 1
                             self.counttotal += 1
+                            answers.removeAll()
                             stackOfOperation.append("left")
                             
                             
@@ -116,6 +117,7 @@ struct SubtractionGameView: View {
                             if countleft > countright {
                                 self.countright += 1
                                 self.counttotal -= 1
+                                answers.removeAll()
                                 stackOfOperation.append("right")
                             } else {
                                 self.countright += 0
@@ -181,7 +183,7 @@ struct SubtractionGameView: View {
     var undoButton: some View{
         Button {
             if let operation = stackOfOperation.last {
-              
+                answers.removeAll()
                 if operation == "left" {
                     countleft -= 1
                 } else {
@@ -207,6 +209,7 @@ struct SubtractionGameView: View {
     }
         var clearButton: some View {
             Button {
+                answers.removeAll()
                 counttotal = 0
                 countleft = 0
                 countright = 0

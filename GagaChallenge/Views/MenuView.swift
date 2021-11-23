@@ -1,5 +1,6 @@
 
 import SwiftUI
+import AVKit
 
 struct MenuView: View {
     
@@ -9,6 +10,9 @@ struct MenuView: View {
     @State var currentGameView: AnyView
     let sizeOfRROfDescription = CGSize(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.3)
     var sizeOfPictureDescription: CGSize { CGSize(width: sizeOfRROfDescription.width*0.5, height: sizeOfRROfDescription.height*0.5) }
+    
+//    var soundManager: SoundManager
+    
     
     var name: String {
         appModel.user?.name ?? ""
@@ -32,6 +36,9 @@ struct MenuView: View {
         _showProfile = State (initialValue: (appModel.user == nil))
         _showGame = State(initialValue: false)
     }
+//    init(soundmanager:SoundManager){
+//    self.soundManager.playSound(sound: SoundOption)
+//    }
 
     var body: some View {
         NavigationView {
@@ -50,6 +57,7 @@ struct MenuView: View {
 
     var profileInfo: some View {
         return Group {
+            
             VStack {
                 ZStack {
                     Circle()

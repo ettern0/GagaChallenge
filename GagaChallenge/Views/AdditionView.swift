@@ -25,14 +25,9 @@ struct AdditionGameView: View {
     var body: some View {
         
         NavigationView {
- 
-
-                      
             
             ZStack{
                 
-                
-            
                 VStack {
                     
                 Spacer(minLength: 100)
@@ -74,6 +69,7 @@ struct AdditionGameView: View {
                     .foregroundColor(Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)))
                     .onTapGesture {
                         refreshAnswers()
+                        
                                 print(" \(counttotal) ")
                         
                     }
@@ -101,7 +97,10 @@ struct AdditionGameView: View {
                             
                             self.countleft += 1
                             self.counttotal += 1
+                            answers.removeAll()
                             stackOfOperation.append("left")
+                            
+                            
                             
                             
                         }
@@ -112,8 +111,9 @@ struct AdditionGameView: View {
                         .onTapGesture {
                             self.countright += 1
                             self.counttotal += 1
+                            answers.removeAll()
                             stackOfOperation.append("right")
-                        
+                                                    
                 }
                
                 
@@ -193,6 +193,7 @@ struct AdditionGameView: View {
                 
                 counttotal -= 1
                 stackOfOperation.removeLast()
+                answers.removeAll()
             }
             
         }
@@ -213,6 +214,7 @@ struct AdditionGameView: View {
                 counttotal = 0
                 countleft = 0
                 countright = 0
+                answers.removeAll()
                 stackOfOperation.removeAll()
             } label: {
                 Image(systemName: "trash")
