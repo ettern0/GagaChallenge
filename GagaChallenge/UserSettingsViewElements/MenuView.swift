@@ -77,7 +77,7 @@ struct MenuView: View {
                     HStack{
                         Button(action: {
                             self.showGame = true
-                            self.currentGameView = AnyView(AdditionGameView(showGame: $showGame))
+                            self.currentGameView = AnyView(AdditionGameView(appModel: appModel, showGame: $showGame))
                         }) {
                             Image("plus")
 
@@ -92,7 +92,7 @@ struct MenuView: View {
                         }
                         Button(action: {
                             self.showGame = true
-                            self.currentGameView = AnyView(SubtractionGameView(showGame: $showGame))
+                            self.currentGameView = AnyView(SubtractionGameView(appModel: appModel, showGame: $showGame))
                         }) {
                             Image("minus")
                                 .resizable()

@@ -32,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		425B0EF7274AD9AF0014BBD6 /* SubtractionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtractionView.swift; sourceTree = "<group>"; };
+		425B0EF9274C10AE0014BBD6 /* music.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = music.m4a; path = ../../../../Downloads/music.m4a; sourceTree = "<group>"; };
 		42DF259F2745118B002B33B7 /* AdditionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionView.swift; sourceTree = "<group>"; };
 		770F713E2739469A00DB9D62 /* GagaChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GagaChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		770F71412739469A00DB9D62 /* GagaChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GagaChallengeApp.swift; sourceTree = "<group>"; };
@@ -98,6 +99,7 @@
 				774A3A9F273E8B7300067A76 /* ExtensionsAndGenerals.swift */,
 				770F71452739469B00DB9D62 /* Assets.xcassets */,
 				774A3AA3274235E600067A76 /* download.mp4 */,
+				425B0EF9274C10AE0014BBD6 /* music.m4a */,
 				770F714C2739469B00DB9D62 /* GagaChallenge.xcdatamodeld */,
 				770F71472739469B00DB9D62 /* Preview Content */,
 			);
@@ -364,7 +366,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.GagaChallenge;
+				PRODUCT_BUNDLE_IDENTIFIER = com.GagaChallengeElio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

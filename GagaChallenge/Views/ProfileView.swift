@@ -2,7 +2,7 @@ import SwiftUI
 import CoreData
 
 struct ProfileView: View {
-
+    
     @ObservedObject var appModel: AppModel
     @Binding var showProfile: Bool
     let sizeOfRROfDescription = CGSize(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.3)
@@ -11,7 +11,7 @@ struct ProfileView: View {
     let signArray: Array<String> = ["cowboy", "knight", "angel",
                                     "clown" ,"doctor", "pirate",
                                     "viking", "wizard", "woman"]
-
+    
     var user: Users?
     @State var name: String
     @State var age: Int16
@@ -51,6 +51,8 @@ struct ProfileView: View {
         }
 
         self._showProfile = showProfile
+    
+    
     }
 
     var body: some View {
