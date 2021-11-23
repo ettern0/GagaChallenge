@@ -152,4 +152,11 @@ extension Int {
     }
 }
 
-
+struct Answer {
+    var value: Int
+    var rightAnswer: Bool = false
+    var color: Color?
+    var stringValue: String {
+        value.stringValue
+    }
+}

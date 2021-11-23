@@ -42,11 +42,10 @@ struct MenuView: View {
                     "",
                     destination: currentGameView,
                     isActive: $showGame)
-
-                    profileInfo
-                    Spacer(minLength: 40)
-                    buttonsView
-                }
+                profileInfo
+                Spacer(minLength: 40)
+                buttonsView
+            }
         }
     }
 
@@ -65,7 +64,6 @@ struct MenuView: View {
                         .onLongPressGesture {
                             self.showProfile.toggle()
                         }
-
                 }
                 Text("Hi, \(name) !")
                     .font(.largeTitle)
@@ -103,7 +101,10 @@ struct MenuView: View {
                     Image("multiply")
                         .MenuModifeier(rectColor: .green, signWidth: 60, signHeight: 60)
                 }
-                Button(action:/*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+                Button(action:{
+                    self.showGame = true
+                    self.currentGameView = AnyView(DivisionView())
+                }) {
                     Image("divide")
                         .MenuModifeier(rectColor: .yellow, signWidth: 80, signHeight: 70)
                 }

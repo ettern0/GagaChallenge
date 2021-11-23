@@ -165,15 +165,6 @@ struct MultiplicationGameView: View {
         }
     }
 
-    struct Answer {
-        var value: Int
-        var rightAnswer: Bool = false
-        var color: Color?
-        var stringValue: String {
-            value.stringValue
-        }
-    }
-
     private func addNewPoint(_ value: DragGesture.Value, borderX: CGFloat, borderY: CGFloat) {
         if value.location.y >= -0, value.location.y <= 630 {
             curves[curves.endIndex - 1].append(value.location)
