@@ -5,13 +5,10 @@
 //  Created by Elio Fortunato on 17/11/21.
 //
 
-
 import SwiftUI
 
-    
-
-
 struct AdditionGameView: View {
+
     @ObservedObject var appModel: AppModel
     @State var countleft: Int = 0
     @State var countright: Int = 0
@@ -21,58 +18,55 @@ struct AdditionGameView: View {
     @State var answers: [Answer] = []
     @State var stackOfOperation: [String] = []
     let sizeOfTopAnButton = CGSize(width: UIScreen.main.bounds.width * 0.95, height: UIScreen.main.bounds.height * 0.1)
-            
+
     var body: some View {
         
         NavigationView {
-            
             ZStack{
-                
                 VStack {
-                    
-                Spacer(minLength: 100)
-                    
-                    
-                Capsule()
-                    .fill(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)), Color(#colorLiteral(red: 0.6745098039, green: 0.9843137255, blue: 0.5568627451, alpha: 1))]), startPoint: .top, endPoint: .bottom))
-                    .frame(width: 6.0, height: 150.0)
-                    .padding(.top,-200)
+                    Spacer(minLength: 100)
                     
                     
-                
-                    Image(systemName:"plus")
-                    .resizable()
-                    .frame(width: 80.0, height: 80.0)
-                    .foregroundColor(Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)))
-                    .frame(width: 150.0, height: 150.0)
-                    .padding(.horizontal)
-                    .padding(.top, -50)
-                
-                
                     Capsule()
-                    .fill(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)), Color(#colorLiteral(red: 0.6745098039, green: 0.9843137255, blue: 0.5568627451, alpha: 1))]), startPoint: .top, endPoint: .bottom))
-                    .frame(width: 6.0, height: 150.0)
-//                    .padding(.top, -200)
-                
-                
-                    Capsule()
-                    .fill(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)), Color(#colorLiteral(red: 0.6745098039, green: 0.9843137255, blue: 0.5568627451, alpha: 1))]), startPoint: .leading, endPoint: .trailing))
-                    .frame(width: 360.0, height: 6.0)
-//                    .padding(.top, -200)
-                
-                Spacer(minLength: 50)
-                
+                        .fill(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)), Color(#colorLiteral(red: 0.6745098039, green: 0.9843137255, blue: 0.5568627451, alpha: 1))]), startPoint: .top, endPoint: .bottom))
+                        .frame(width: 6.0, height: 150.0)
+                        .padding(.top,-200)
+                    
+                    
 
-                Image(systemName:"equal")
-                    .resizable()
-                    .frame(width: 60, height: 40)
-                    .foregroundColor(Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)))
-                    .onTapGesture {
-                        refreshAnswers()
-                        
-                                print(" \(counttotal) ")
-                        
-                    }
+                    Image(systemName:"plus")
+                        .resizable()
+                        .frame(width: 80.0, height: 80.0)
+                        .foregroundColor(Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)))
+                        .frame(width: 150.0, height: 150.0)
+                        .padding(.horizontal)
+                        .padding(.top, -50)
+
+
+                    Capsule()
+                        .fill(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)), Color(#colorLiteral(red: 0.6745098039, green: 0.9843137255, blue: 0.5568627451, alpha: 1))]), startPoint: .top, endPoint: .bottom))
+                        .frame(width: 6.0, height: 150.0)
+                    //                    .padding(.top, -200)
+
+
+                    Capsule()
+                        .fill(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)), Color(#colorLiteral(red: 0.6745098039, green: 0.9843137255, blue: 0.5568627451, alpha: 1))]), startPoint: .leading, endPoint: .trailing))
+                        .frame(width: 360.0, height: 6.0)
+                    //                    .padding(.top, -200)
+
+                    Spacer(minLength: 50)
+
+
+                    Image(systemName:"equal")
+                        .resizable()
+                        .frame(width: 60, height: 40)
+                        .foregroundColor(Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)))
+                        .onTapGesture {
+                            refreshAnswers()
+
+                            print(" \(counttotal) ")
+
+                        }
                     
                     Spacer(minLength: 200)
                     
@@ -80,12 +74,12 @@ struct AdditionGameView: View {
                         .position(x: 215, y: -70)
                     
                     
-            }
-                    
-                    
+                }
+
+
                 
-            
-            
+
+
                 
                 HStack {
                     
@@ -113,33 +107,33 @@ struct AdditionGameView: View {
                             self.counttotal += 1
                             answers.removeAll()
                             stackOfOperation.append("right")
-                                                    
+
+                        }
+
+
+
                 }
-               
-                
-            
-            }
-                    .padding(.top, -500)
-                    .padding(.leading, 0)
-               
+                .padding(.top, -500)
+                .padding(.leading, 0)
+
                 GeometryReader { proxy in
                     
-                   
+
                     ForEach(0...countleft, id:\.self) { index in
                         if index > 0 {
-                        
-                        CirclesView(appModel: appModel,index: index, offset: logicalFunction(size: proxy.size))
-//                            .blur(radius: 1)
-                            .animation(.easeIn(duration: 1))
-                    }
-                            
+
+                            CirclesView(appModel: appModel,index: index, offset: logicalFunction(size: proxy.size))
+                            //                            .blur(radius: 1)
+                                .animation(.easeIn(duration: 1))
+                        }
+
                     }
                     ForEach(0...countright, id:\.self) { index in
                         if index > 0 {
                             
                             CirclesrView(appModel: appModel, index: index, offset: logicalFunction(size: proxy.size))
-//                            .blur(radius: 1)
-                            .animation(.easeIn(duration: 1))
+                            //                            .blur(radius: 1)
+                                .animation(.easeIn(duration: 1))
                         }
                     }
                     
@@ -164,13 +158,13 @@ struct AdditionGameView: View {
                     .padding(.top, -270)
                     .foregroundColor(Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)))
                 
-            
+
             }
             
-//            .padding(.all)
-            }
+            //            .padding(.all)
+        }
         
-//        .navigationBarBackButtonHidden(true)
+        //        .navigationBarBackButtonHidden(true)
         .navigationBarItems(
             trailing:
                 HStack {
@@ -184,7 +178,7 @@ struct AdditionGameView: View {
     var undoButton: some View{
         Button {
             if let operation = stackOfOperation.last {
-              
+
                 if operation == "left" {
                     countleft -= 1
                 } else {
@@ -200,7 +194,7 @@ struct AdditionGameView: View {
     label:{
         Image(systemName: "arrow.uturn.backward.circle")
     }
-}
+    }
     
     var backButton: some View {
         Button {
@@ -209,18 +203,18 @@ struct AdditionGameView: View {
             Text("Back")
         }
     }
-        var clearButton: some View {
-            Button {
-                counttotal = 0
-                countleft = 0
-                countright = 0
-                answers.removeAll()
-                stackOfOperation.removeAll()
-            } label: {
-                Image(systemName: "trash")
-            }
-
+    var clearButton: some View {
+        Button {
+            counttotal = 0
+            countleft = 0
+            countright = 0
+            answers.removeAll()
+            stackOfOperation.removeAll()
+        } label: {
+            Image(systemName: "trash")
         }
+
+    }
     func logicalFunction(size: CGSize) -> CGSize {
         
         // Do your works here!
@@ -239,10 +233,10 @@ struct AdditionGameView: View {
         return  RoundedRectangle(cornerRadius: 10)
             .frame(width: sizeOfTopAnButton.width, height: sizeOfTopAnButton.height * 0.8)
             .foregroundColor(.white)
-//            .onAppear {
-//                refreshAnswers()
-                
-//            }
+        //            .onAppear {
+        //                refreshAnswers()
+
+        //            }
             .overlay {
                 if !answers.isEmpty {
                     LazyHGrid(rows: rows, alignment: .center, spacing: spacing) {
@@ -271,20 +265,20 @@ struct AdditionGameView: View {
     }
     
     private func refreshAnswers() {
-//        if answers.isEmpty {
+        //        if answers.isEmpty {
         answers.removeAll()
-            let resultOfMultiply: Int = counttotal
-            var arrayOfColors: [Color]? = getArrayOfGeneralColors()
-            arrayOfColors?.shuffle()
+        let resultOfMultiply: Int = counttotal
+        var arrayOfColors: [Color]? = getArrayOfGeneralColors()
+        arrayOfColors?.shuffle()
 
-            answers.append(Answer(value: resultOfMultiply, rightAnswer: true, color: arrayOfColors?.first))
+        answers.append(Answer(value: resultOfMultiply, rightAnswer: true, color: arrayOfColors?.first))
+        arrayOfColors?.removeFirst()
+        for _ in 0...2 {
+            answers.append(Answer(value: Int.randomExept(of: resultOfMultiply, range: 0...25), color: arrayOfColors?.first))
             arrayOfColors?.removeFirst()
-            for _ in 0...2 {
-                answers.append(Answer(value: Int.randomExept(of: resultOfMultiply, range: 0...25), color: arrayOfColors?.first))
-                arrayOfColors?.removeFirst()
-            }
-            answers.shuffle()
-//        }
+        }
+        answers.shuffle()
+        //        }
     }
 }
 
@@ -302,20 +296,20 @@ struct CirclesView: View {
     var picture: String {
         appModel.user?.picture ?? ""
     }
-        var body: some View {
+    var body: some View {
 
-            Circle()
+        Circle()
 
-                .frame(width: 30, height: 30, alignment: .topTrailing)
-                .foregroundColor((color))
-                .overlay {
-                    
-                        Image(picture)
-                        .resizable()
-                        .scaledToFit()
-                        }
-                .offset(offset)
-                .position(x: -105, y: -250)
+            .frame(width: 30, height: 30, alignment: .topTrailing)
+            .foregroundColor((color))
+            .overlay {
+
+                Image(picture)
+                    .resizable()
+                    .scaledToFit()
+            }
+            .offset(offset)
+            .position(x: -105, y: -250)
     }
 }
 
@@ -333,21 +327,21 @@ struct CirclesrView: View {
     var picture: String {
         appModel.user?.picture ?? ""
     }
-        var body: some View {
+    var body: some View {
 
-            Circle()
+        Circle()
 
-                .frame(width: 30, height: 30, alignment: .topTrailing)
-                .foregroundColor((color))
-                .overlay {
-                    
-                        Image(picture)
-                        .resizable()
-                        .scaledToFit()
-                          
-                }
-                .offset(offset)
-                .position(x: 105, y: -250)
-        }
+            .frame(width: 30, height: 30, alignment: .topTrailing)
+            .foregroundColor((color))
+            .overlay {
+
+                Image(picture)
+                    .resizable()
+                    .scaledToFit()
+
+            }
+            .offset(offset)
+            .position(x: 105, y: -250)
+    }
 }
 

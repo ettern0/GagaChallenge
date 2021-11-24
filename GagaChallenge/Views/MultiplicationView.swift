@@ -34,7 +34,6 @@ struct MultiplicationGameView: View {
                         clearButton
                         Spacer()
                     })
-
             Image("panda")
                 .resizable()
                 .scaledToFit()
