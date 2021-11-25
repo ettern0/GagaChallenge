@@ -10,6 +10,7 @@ struct MultiplicationGameView: View {
     @State var secondMultiplicationDigit = Int.random(in: 1...5)
     @State var animateWrongAnswer: Bool = false
     @State var answers: [Answer] = []
+    @State var showHelp: Bool = false
     let sizeOfTopAnButton = CGSize(width: UIScreen.main.bounds.width * 0.95, height: UIScreen.main.bounds.height * 0.1)
     var pointsIntersection: [CGPoint] {
         getIntersectionsOfPoints(points: curves)
@@ -17,6 +18,10 @@ struct MultiplicationGameView: View {
 
     var body: some View {
         ZStack {
+            NavigationLink(
+                "",
+                destination: HelpView(helpVideo: .multiplyHelp, pause: 2, showVideo: $showHelp),
+                isActive: $showHelp)
             Rectangle()
                 .foregroundColor(.white)
             VStack(spacing: 0) {
@@ -32,6 +37,7 @@ struct MultiplicationGameView: View {
                     HStack {
                         undoButton
                         clearButton
+                        helpButton
                         Spacer()
                     })
             Image("panda")
@@ -168,6 +174,14 @@ struct MultiplicationGameView: View {
     private func addNewPoint(_ value: DragGesture.Value, borderX: CGFloat, borderY: CGFloat) {
         if value.location.y >= -0, value.location.y <= 630 {
             curves[curves.endIndex - 1].append(value.location)
+        }
+    }
+
+    var helpButton: some View {
+        Button {
+            showHelp = true
+        } label: {
+            Image(systemName: "questionmark.circle")
         }
     }
 

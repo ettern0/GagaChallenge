@@ -20,7 +20,7 @@
 		774A3A65273A810600067A76 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774A3A64273A810600067A76 /* ProfileView.swift */; };
 		774A3A9E273E811500067A76 /* AgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774A3A9D273E811500067A76 /* AgeView.swift */; };
 		774A3AA0273E8B7300067A76 /* ExtensionsAndGenerals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774A3A9F273E8B7300067A76 /* ExtensionsAndGenerals.swift */; };
-		774A3AA22742338600067A76 /* DownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774A3AA12742338600067A76 /* DownloadView.swift */; };
+		774A3AA22742338600067A76 /* VideoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774A3AA12742338600067A76 /* VideoViews.swift */; };
 		774A3AA4274235E600067A76 /* download.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 774A3AA3274235E600067A76 /* download.mp4 */; };
 		774A3AA927427EDD00067A76 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774A3AA827427EDD00067A76 /* MenuView.swift */; };
 		774C9C4A274F872300AB6094 /* pop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 774C9C49274F872300AB6094 /* pop.mp3 */; };
@@ -49,7 +49,7 @@
 		774A3A64273A810600067A76 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		774A3A9D273E811500067A76 /* AgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeView.swift; sourceTree = "<group>"; };
 		774A3A9F273E8B7300067A76 /* ExtensionsAndGenerals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsAndGenerals.swift; sourceTree = "<group>"; };
-		774A3AA12742338600067A76 /* DownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadView.swift; sourceTree = "<group>"; };
+		774A3AA12742338600067A76 /* VideoViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViews.swift; sourceTree = "<group>"; };
 		774A3AA3274235E600067A76 /* download.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = download.mp4; sourceTree = "<group>"; };
 		774A3AA7274262B400067A76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		774A3AA827427EDD00067A76 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
@@ -57,6 +57,7 @@
 		774C9C4C274F89B300AB6094 /* music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music.mp3; sourceTree = "<group>"; };
 		774C9C4E274F8BF400AB6094 /* rightAnswer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rightAnswer.mp3; sourceTree = "<group>"; };
 		774C9C50274F8ECE00AB6094 /* wrongAnswer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wrongAnswer.mp3; sourceTree = "<group>"; };
+		774C9C54274F93D700AB6094 /* help.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = help.mp4; sourceTree = "<group>"; };
 		7761CA81274BA022009B6C93 /* DivisionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivisionView.swift; sourceTree = "<group>"; };
 		7774CFD1273A6C580093853B /* AppModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		7774CFD4273A6C650093853B /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -106,6 +107,7 @@
 				774A3A9F273E8B7300067A76 /* ExtensionsAndGenerals.swift */,
 				770F71452739469B00DB9D62 /* Assets.xcassets */,
 				774A3AA3274235E600067A76 /* download.mp4 */,
+				774C9C54274F93D700AB6094 /* help.mp4 */,
 				774C9C4C274F89B300AB6094 /* music.mp3 */,
 				774C9C50274F8ECE00AB6094 /* wrongAnswer.mp3 */,
 				774C9C4E274F8BF400AB6094 /* rightAnswer.mp3 */,
@@ -131,7 +133,7 @@
 				774A3AA827427EDD00067A76 /* MenuView.swift */,
 				7761CA81274BA022009B6C93 /* DivisionView.swift */,
 				774A3A9D273E811500067A76 /* AgeView.swift */,
-				774A3AA12742338600067A76 /* DownloadView.swift */,
+				774A3AA12742338600067A76 /* VideoViews.swift */,
 				771D96752743DB740063BFE1 /* MultiplicationView.swift */,
 				42DF259F2745118B002B33B7 /* AdditionView.swift */,
 				425B0EF7274AD9AF0014BBD6 /* SubtractionView.swift */,
@@ -232,7 +234,7 @@
 				774A3AA0273E8B7300067A76 /* ExtensionsAndGenerals.swift in Sources */,
 				774A3AA927427EDD00067A76 /* MenuView.swift in Sources */,
 				771D96762743DB740063BFE1 /* MultiplicationView.swift in Sources */,
-				774A3AA22742338600067A76 /* DownloadView.swift in Sources */,
+				774A3AA22742338600067A76 /* VideoViews.swift in Sources */,
 				425B0EF8274AD9AF0014BBD6 /* SubtractionView.swift in Sources */,
 				774A3A9E273E811500067A76 /* AgeView.swift in Sources */,
 				77261ECA2743BEBE0076CA09 /* AVManager.swift in Sources */,
