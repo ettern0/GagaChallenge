@@ -118,6 +118,7 @@ struct ProfileView: View {
                     if self.nameIsEditing && self.name != "" {
                         Button {
                             self.name = ""
+                            AdditionalSoundsEffect.instance.playSound(sound: .pop)
                         } label: {
                         Image(systemName: "xmark.circle.fill")
                             .padding(.trailing)
@@ -146,6 +147,7 @@ struct ProfileView: View {
                             .frame(width: 30, height: 30)
                             .onTapGesture {
                                 self.color = item
+                                AdditionalSoundsEffect.instance.playSound(sound: .pop)
                             }
                     }
                 }
@@ -175,6 +177,7 @@ struct ProfileView: View {
                                 }
                                 .onTapGesture {
                                     self.picture = _sign
+                                    AdditionalSoundsEffect.instance.playSound(sound: .pop)
                                 }
                         }
                     }
@@ -188,6 +191,7 @@ struct ProfileView: View {
     var backButton: some View {
         Button {
             showProfile.toggle()
+            AdditionalSoundsEffect.instance.playSound(sound: .pop)
         } label: {
             Text("Cancel")
         }
@@ -200,6 +204,7 @@ struct ProfileView: View {
                               picture: picture,
                               color: color)
             showProfile.toggle()
+            AdditionalSoundsEffect.instance.playSound(sound: .pop)
         } label: {
             Text("Done")
         }

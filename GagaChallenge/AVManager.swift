@@ -26,7 +26,7 @@ class SoundManager {
             soundPlayer = try AVAudioPlayer(contentsOf: url)
             soundPlayer?.numberOfLoops = -1
             soundPlayer?.play()
-            soundPlayer?.volume = 0.1
+            soundPlayer?.volume = 0.5
         } catch let error {
             print("Error playing sound. \(error.localizedDescription)")
         }
@@ -41,7 +41,7 @@ class AdditionalSoundsEffect {
     private var soundPlayer: AVAudioPlayer?
 
     enum AdditionalSoundOption: String {
-       case click
+        case pop, rightAnswer, wrongAnswer
     }
 
     func playSound(sound: AdditionalSoundOption, volume: Float = 1, duration: Float? = nil, setVolume: Bool = false) -> Void {
@@ -50,7 +50,7 @@ class AdditionalSoundsEffect {
 
         do {
             soundPlayer = try AVAudioPlayer(contentsOf: url)
-           soundPlayer?.play()
+            soundPlayer?.play()
 
             if let x = duration {
                 if setVolume {

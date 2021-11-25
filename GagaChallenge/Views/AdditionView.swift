@@ -248,8 +248,10 @@ struct AdditionGameView: View {
                                     countleft = 0
                                     countright = 0
                                     answers.removeAll()
+                                    AdditionalSoundsEffect.instance.playSound(sound: .rightAnswer)
                                 } else {
                                     animateWrongAnswer.toggle()
+                                    AdditionalSoundsEffect.instance.playSound(sound: .wrongAnswer)
                                 }
                             }, label: {
                                 Text(answers[index].stringValue)

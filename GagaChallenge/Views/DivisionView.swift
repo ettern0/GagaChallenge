@@ -16,16 +16,15 @@ struct DivisionView: View {
     }
 
     var body: some View {
-
-        let SKScene = DivisionScene(size: UIScreen.main.bounds.size,
-                                    result: result,
-                                    secondDivisionDigit: secondDivisionDigit)
-        VStack {
-            example
-            SpriteView(scene: SKScene,
-                       options: [.allowsTransparency])
-            answersView
-        }
+            let SKScene = DivisionScene(size: UIScreen.main.bounds.size,
+                                        result: result,
+                                        secondDivisionDigit: secondDivisionDigit)
+            VStack {
+                example
+                SpriteView(scene: SKScene,
+                           options: [.allowsTransparency])
+                answersView
+            }
     }
 
     var example: some View {
@@ -51,7 +50,7 @@ struct DivisionView: View {
             .frame(width: sizeOfTopAnButton.width, height: sizeOfTopAnButton.height * 0.8)
             .foregroundColor(.white)
             .onAppear {
-            refreshAnswers()}
+                refreshAnswers()}
             .overlay {
                 if !answers.isEmpty {
                     LazyHGrid(rows: rows, alignment: .center, spacing: spacing) {
@@ -59,8 +58,10 @@ struct DivisionView: View {
                             Button(action: {
                                 if answers[index].rightAnswer {
                                     refreshGame()
+                                    AdditionalSoundsEffect.instance.playSound(sound: .rightAnswer)
                                 } else {
                                     animateWrongAnswer.toggle()
+                                    AdditionalSoundsEffect.instance.playSound(sound: .wrongAnswer)
                                 }
                             }, label: {
                                 Text(answers[index].stringValue)
@@ -68,7 +69,6 @@ struct DivisionView: View {
                                 .modifier(ButtonTextViewModifier(sizeOfButton: sizeOfTopAnButton.height * 0.7, sizeOfText: 50, rectColor: answers[index].color))
                                 .offset(x: animateWrongAnswer ? 0 : -5)
                                 .animation(Animation.default.repeatCount(3).speed(3), value: animateWrongAnswer)
-
                         }
                     }
                 }
@@ -130,6 +130,10 @@ class DivisionScene: SKScene, SKPhysicsContactDelegate {
         self.result = result
         self.secondDivisionDigit = secondDivisionDigit
         super.init(size: size)
+        if let view = self.view {
+            self.removeAllChildren()
+            didMove(to: view)
+        }
     }
 
     @available(*, unavailable)

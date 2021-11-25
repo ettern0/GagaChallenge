@@ -60,8 +60,10 @@ struct MultiplicationGameView: View {
                             Button(action: {
                                 if answers[index].rightAnswer {
                                     refreshGame()
+                                    AdditionalSoundsEffect.instance.playSound(sound: .rightAnswer)
                                 } else {
                                     animateWrongAnswer.toggle()
+                                    AdditionalSoundsEffect.instance.playSound(sound: .wrongAnswer)
                                 }
                             }, label: {
                                 Text(answers[index].stringValue)

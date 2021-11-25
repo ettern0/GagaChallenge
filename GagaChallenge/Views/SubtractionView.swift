@@ -21,33 +21,17 @@ struct SubtractionGameView: View {
     @State var animateWrongAnswer: Bool = false
     @State var answers: [Answer] = []
     let sizeOfTopAnButton = CGSize(width: UIScreen.main.bounds.width * 0.95, height: UIScreen.main.bounds.height * 0.1)
-            
-    
- 
-            
+
     var body: some View {
         
         NavigationView {
- 
-
-                      
-            
             ZStack{
-                
-                
-            
                 VStack {
-                    
                 Spacer(minLength: 100)
-                    
-                    
                 Capsule()
                     .fill(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)), Color(#colorLiteral(red: 0.6745098039, green: 0.9843137255, blue: 0.5568627451, alpha: 1))]), startPoint: .top, endPoint: .bottom))
                     .frame(width: 6.0, height: 150.0)
                     .padding(.top,-200)
-                    
-                    
-                
                     Image(systemName:"minus")
                     .resizable()
                     .frame(width: 50.0, height: 10.0)
@@ -55,31 +39,23 @@ struct SubtractionGameView: View {
                     .frame(width: 150.0, height: 150.0)
                     .padding(.horizontal)
                     .padding(.top, -50)
-                
-                
                     Capsule()
                     .fill(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)), Color(#colorLiteral(red: 0.6745098039, green: 0.9843137255, blue: 0.5568627451, alpha: 1))]), startPoint: .top, endPoint: .bottom))
                     .frame(width: 6.0, height: 150.0)
 //                    .padding(.top, -200)
-                
-                
                     Capsule()
                     .fill(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)), Color(#colorLiteral(red: 0.6745098039, green: 0.9843137255, blue: 0.5568627451, alpha: 1))]), startPoint: .leading, endPoint: .trailing))
                     .frame(width: 360.0, height: 6.0)
 //                    .padding(.top, -200)
-                
                 Spacer(minLength: 50)
-                
-
                 Image(systemName:"equal")
                     .resizable()
                     .frame(width: 60, height: 40)
                     .foregroundColor(Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)))
                     .onTapGesture {
                         refreshAnswers()
-                                print(" \(counttotal) ")
+                        print(" \(counttotal) ")
                         answersView
-                    
                     }
                     
                     Spacer(minLength: 200)
@@ -88,12 +64,7 @@ struct SubtractionGameView: View {
                         .position(x: 215, y: -100)
                     
             }
-                    
-                    
-                
-            
-            
-                
+
                 HStack {
                     
                     
@@ -101,14 +72,11 @@ struct SubtractionGameView: View {
                         .foregroundColor(Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 0.01)))
                         .frame(width: 207, height: 500)
                         .onTapGesture {
-                            
                             self.countleft += 1
                             self.counttotal += 1
                             answers.removeAll()
                             stackOfOperation.append("left")
-                            
-                            
-                        }
+                     }
                     
                     Rectangle()
                         .foregroundColor(Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 0.01)))
@@ -125,9 +93,7 @@ struct SubtractionGameView: View {
                             }
                             
                         }
-                    
-                    
-                    
+
                 }
                     .padding(.top, -500)
                     .padding(.leading, 0)
@@ -252,8 +218,10 @@ struct SubtractionGameView: View {
                                     countleft = 0
                                     countright = 0
                                     answers.removeAll()
+                                    AdditionalSoundsEffect.instance.playSound(sound: .rightAnswer)
                                 } else {
                                     animateWrongAnswer.toggle()
+                                    AdditionalSoundsEffect.instance.playSound(sound: .wrongAnswer)
                                 }
                             }, label: {
                                 Text(answers[index].stringValue)

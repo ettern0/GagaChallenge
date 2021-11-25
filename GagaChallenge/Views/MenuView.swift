@@ -10,10 +10,7 @@ struct MenuView: View {
     @State var currentGameView: AnyView
     let sizeOfRROfDescription = CGSize(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.3)
     var sizeOfPictureDescription: CGSize { CGSize(width: sizeOfRROfDescription.width*0.5, height: sizeOfRROfDescription.height*0.5) }
-    
-//    var soundManager: SoundManager
-    
-    
+
     var name: String {
         appModel.user?.name ?? ""
     }
@@ -36,9 +33,6 @@ struct MenuView: View {
         _showProfile = State (initialValue: (appModel.user == nil))
         _showGame = State(initialValue: false)
     }
-//    init(soundmanager:SoundManager){
-//    self.soundManager.playSound(sound: SoundOption)
-//    }
 
     var body: some View {
         NavigationView {
@@ -51,6 +45,9 @@ struct MenuView: View {
                 profileInfo
                 Spacer(minLength: 40)
                 buttonsView
+            }
+            .onAppear {
+                SoundManager.instance.playSound(sound: .music)
             }
         }
     }
@@ -91,6 +88,7 @@ struct MenuView: View {
                 Button(action: {
                     self.showGame = true
                     self.currentGameView = AnyView(AdditionGameView(appModel: appModel, showGame: $showGame))
+                    AdditionalSoundsEffect.instance.playSound(sound: .pop)
                 }) {
                     Image("plus")
                         .MenuModifeier(rectColor: .red, signWidth: 80, signHeight: 80)
@@ -98,6 +96,7 @@ struct MenuView: View {
                 Button(action: {
                     self.showGame = true
                     self.currentGameView = AnyView(SubtractionGameView(appModel: appModel, showGame: $showGame))
+                    AdditionalSoundsEffect.instance.playSound(sound: .pop)
                 }) {
                     Image("minus")
                         .MenuModifeier(rectColor: .blue, signWidth: 80, signHeight: 15)
@@ -107,6 +106,7 @@ struct MenuView: View {
                 Button(action: {
                     self.showGame = true
                     self.currentGameView = AnyView(MultiplicationGameView(showGame: $showGame))
+                    AdditionalSoundsEffect.instance.playSound(sound: .pop)
                 }) {
                     Image("multiply")
                         .MenuModifeier(rectColor: .green, signWidth: 60, signHeight: 60)
@@ -114,6 +114,7 @@ struct MenuView: View {
                 Button(action:{
                     self.showGame = true
                     self.currentGameView = AnyView(DivisionView())
+                    AdditionalSoundsEffect.instance.playSound(sound: .pop)
                 }) {
                     Image("divide")
                         .MenuModifeier(rectColor: .yellow, signWidth: 80, signHeight: 70)
