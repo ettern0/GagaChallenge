@@ -10,6 +10,7 @@ struct DivisionView: View {
     @State var animateWrongAnswer: Bool = false
     @State var result = Int.random(in: 2...3)
     @State var secondDivisionDigit = Int.random(in: 1...3)
+    @State var showHelp: Bool = false
 
     var firstDivisionDigit: Int {
         result * secondDivisionDigit
@@ -20,11 +21,20 @@ struct DivisionView: View {
                                         result: result,
                                         secondDivisionDigit: secondDivisionDigit)
             VStack {
+                NavigationLink(
+                    "",
+                    destination: HelpView(helpVideo: .divisionHelp),
+                    isActive: $showHelp)
                 example
                 SpriteView(scene: SKScene,
                            options: [.allowsTransparency])
                 answersView
             }
+            .navigationBarItems(
+                trailing:
+                    HStack {
+                        helpButton
+                    })
     }
 
     var example: some View {
@@ -38,6 +48,14 @@ struct DivisionView: View {
                 }
             }
 
+        }
+    }
+
+    var helpButton: some View {
+        Button {
+            showHelp = true
+        } label: {
+            Image(systemName: "questionmark.circle")
         }
     }
 
@@ -197,8 +215,7 @@ class DivisionScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
         }
-
-    }
+}
 
     func generateArrayOfFirstDivisionSprites() {
 

@@ -21,11 +21,16 @@ struct SubtractionGameView: View {
     @State var animateWrongAnswer: Bool = false
     @State var answers: [Answer] = []
     let sizeOfTopAnButton = CGSize(width: UIScreen.main.bounds.width * 0.95, height: UIScreen.main.bounds.height * 0.1)
-
+    @State var showHelp: Bool = false
+    
     var body: some View {
         
         NavigationView {
             ZStack{
+                NavigationLink(
+                    "",
+                    destination: HelpView(helpVideo: .substractionHelp),
+                    isActive: $showHelp)
                 VStack {
                 Spacer(minLength: 100)
                 Capsule()
@@ -141,6 +146,7 @@ struct SubtractionGameView: View {
                 HStack {
                     undoButton
                     clearButton
+                    helpButton
                     Spacer()
                 })
 
@@ -185,6 +191,15 @@ struct SubtractionGameView: View {
             }
 
         }
+
+    var helpButton: some View {
+        Button {
+            showHelp = true
+        } label: {
+            Image(systemName: "questionmark.circle")
+        }
+    }
+
     func logicalFunction(size: CGSize) -> CGSize {
         
         // Do your works here!

@@ -27,23 +27,17 @@ struct DownloadView: View {
 struct HelpView: View {
 
     enum Video: String {
-        case multiplyHelp, divisionHelp, additionHelp, substractionView
+        case download, multiplyHelp, divisionHelp, additionHelp, substractionHelp
     }
 
     var helpVideo: Video
-    var pause: Int
-    @Binding var showVideo: Bool
-
-    private let videoPlayer = AVPlayer(url: Bundle.main.url(forResource: "help", withExtension: "mp4")!)
 
     var body: some View {
+        let videoPlayer = AVPlayer(url: Bundle.main.url(forResource: helpVideo.rawValue, withExtension: "mp4")!)
         return VStack {
             GagaPlayer(player: videoPlayer)
                 .onAppear {
                     videoPlayer.play()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {  /// Anything over 0.5 seems to work
-                        //appModel.switchState(to: .menu)
-                    }
                 }
                 .onDisappear(perform: {
                     videoPlayer.pause()

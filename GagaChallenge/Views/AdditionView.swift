@@ -18,22 +18,22 @@ struct AdditionGameView: View {
     @State var answers: [Answer] = []
     @State var stackOfOperation: [String] = []
     let sizeOfTopAnButton = CGSize(width: UIScreen.main.bounds.width * 0.95, height: UIScreen.main.bounds.height * 0.1)
-
+    @State var showHelp: Bool = false
+    
     var body: some View {
         
         NavigationView {
             ZStack{
+                NavigationLink(
+                    "",
+                    destination: HelpView(helpVideo: .additionHelp),
+                    isActive: $showHelp)
                 VStack {
                     Spacer(minLength: 100)
-                    
-                    
                     Capsule()
                         .fill(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)), Color(#colorLiteral(red: 0.6745098039, green: 0.9843137255, blue: 0.5568627451, alpha: 1))]), startPoint: .top, endPoint: .bottom))
                         .frame(width: 6.0, height: 150.0)
                         .padding(.top,-200)
-                    
-                    
-
                     Image(systemName:"plus")
                         .resizable()
                         .frame(width: 80.0, height: 80.0)
@@ -41,8 +41,6 @@ struct AdditionGameView: View {
                         .frame(width: 150.0, height: 150.0)
                         .padding(.horizontal)
                         .padding(.top, -50)
-
-
                     Capsule()
                         .fill(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.2352941176, green: 0.7725490196, blue: 0.6117647059, alpha: 1)), Color(#colorLiteral(red: 0.6745098039, green: 0.9843137255, blue: 0.5568627451, alpha: 1))]), startPoint: .top, endPoint: .bottom))
                         .frame(width: 6.0, height: 150.0)
@@ -93,10 +91,6 @@ struct AdditionGameView: View {
                             self.counttotal += 1
                             answers.removeAll()
                             stackOfOperation.append("left")
-                            
-                            
-                            
-                            
                         }
                     
                     Rectangle()
@@ -170,6 +164,7 @@ struct AdditionGameView: View {
                 HStack {
                     undoButton
                     clearButton
+                    helpButton
                     Spacer()
                 })
 
@@ -195,7 +190,15 @@ struct AdditionGameView: View {
         Image(systemName: "arrow.uturn.backward.circle")
     }
     }
-    
+
+    var helpButton: some View {
+        Button {
+            showHelp = true
+        } label: {
+            Image(systemName: "questionmark.circle")
+        }
+    }
+
     var backButton: some View {
         Button {
             showGame.toggle()

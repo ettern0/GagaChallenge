@@ -20,7 +20,7 @@ struct MultiplicationGameView: View {
         ZStack {
             NavigationLink(
                 "",
-                destination: HelpView(helpVideo: .multiplyHelp, pause: 2, showVideo: $showHelp),
+                destination: HelpView(helpVideo: .multiplyHelp),
                 isActive: $showHelp)
             Rectangle()
                 .foregroundColor(.white)
